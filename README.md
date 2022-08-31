@@ -1,1 +1,1 @@
-# FamilyFinanceManagement
+“Family Finance Management Program” will allow family members to register family income and expenses in various categories, e.g., housing, food, leisure/hobbies and others. In such a way, the family will be able to monitor / understand their financial situation and have control over their finances by informing the users on how well the family is successful at adhering to set standards of spending.
