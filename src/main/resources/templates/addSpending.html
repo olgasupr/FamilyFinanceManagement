@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="../static/css/materialize.min.css" th:href="@{/css/materialize.min.css}" media="screen,projection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body style="background-image: url(../static/images/background.jpg); background-repeat: no-repeat; background-size: cover">
+
+<!-- navbar start -->
+<div class="navbar-fixed">
+    <nav class="light-blue darken-4">
+        <div class="nav-wrapper">
+            <a href="home.html" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul style="padding-left: 20px; font-size: x-large">
+                <li style="color: white; font-family: 'Times New Roman'"><b>Family Finance Management</b></li>
+            </ul>
+
+            <ul class="right hide-on-med-and-down">
+                <li><a href="home.html"><b style="font-size: large">Home</b></a></li>
+                <li><a href="#"><b style="font-size: large">Edit income</b></a></li>
+                <li><a href="#"><b style="font-size: large">Add spending</b></a></li>
+                <li><a href="#"><b style="font-size: large">View recent spending</b></a></li>
+                <li><a href="#"><b style="font-size: large">View past months</b></a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<ul class="sidenav" id="mobile-demo">
+    <li><a href="home.html">Home</a></li>
+    <li><a href="editFamilyIncome.html">Edit your family income</a></li>
+    <li><a href="addSpending.html">Add spending</a></li>
+    <li><a href="viewRecentSpending.html">View recent spending</a></li>
+    <li><a href="viewPastMonths.html">View past months' analysis</a></li>
+</ul>
+<!-- navbar end -->
+
+
+
+</body>
+</html>
