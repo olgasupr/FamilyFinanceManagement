@@ -42,9 +42,3 @@ CREATE TABLE IF NOT EXISTS actual_spending(
     FOREIGN KEY (category_id) REFERENCES category (id),
     PRIMARY KEY (id)
 );
-
-select * from period;
-select * from income;
-select * from category;
-select * from target_spending;
-select * from actual_spending;
