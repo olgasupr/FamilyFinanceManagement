@@ -15,6 +15,8 @@ public class ActualSpendingRepo {
 
     public List<ActualSpending> getLatestSpending() {
 
+        //TODO:  read from database here
+
         List<SpendingCategory> spendingCategories = _spendingCategoryRepo.getAllCategories();
 
         return Arrays.asList(

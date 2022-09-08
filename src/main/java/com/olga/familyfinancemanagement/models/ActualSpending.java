@@ -1,13 +1,12 @@
 package com.olga.familyfinancemanagement.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Date;
 
 @AllArgsConstructor
 @Data
+@Setter(AccessLevel.NONE)
 public class ActualSpending {
     private int id;
     private SpendingCategory spendingCategory;

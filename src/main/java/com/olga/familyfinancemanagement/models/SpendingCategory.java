@@ -1,11 +1,10 @@
 package com.olga.familyfinancemanagement.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @AllArgsConstructor
 @Data
+@Setter(AccessLevel.NONE)
 public class SpendingCategory {
     int id;
     String categoryName;

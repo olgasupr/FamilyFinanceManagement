@@ -12,6 +12,9 @@ public class SpendingCategoryRepo {
     }
 
     public List<SpendingCategory> getAllCategories() {
+
+        //TODO:  read from database
+
         return Arrays.asList(
                 new SpendingCategory(1, "category1"),
                 new SpendingCategory(2, "category2")

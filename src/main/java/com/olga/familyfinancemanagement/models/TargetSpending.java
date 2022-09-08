@@ -1,12 +1,10 @@
 package com.olga.familyfinancemanagement.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @AllArgsConstructor
-@NoArgsConstructor
 @Data
+@Setter(AccessLevel.NONE)
 public class TargetSpending {
     SpendingCategory spendingCategory;
     double targetPercentage;
