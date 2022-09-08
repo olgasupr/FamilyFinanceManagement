@@ -1,0 +1,20 @@
+div {
+    font-family: "Times New Roman";
+}
+
+button  {
+    background-color: #01579b;
+    color: white;
+    font-size: x-large;
+}
+
+.modal, .modal-footer {
+    background-color: #01579b;
+    color: white;
+    font-size: x-large;
+}
+
+table, th, td {
+    border:1px solid whitesmoke;
+    border-collapse: collapse;
+}
