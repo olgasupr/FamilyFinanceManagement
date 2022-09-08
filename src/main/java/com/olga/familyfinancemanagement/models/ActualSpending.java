@@ -7,11 +7,14 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 
 @AllArgsConstructor
-@NoArgsConstructor
 @Data
 public class ActualSpending {
-    int id;
-    SpendingCategory spendingCategory;
-    double amount;
-    Date date;
+    private int id;
+    private SpendingCategory spendingCategory;
+    private double amount;
+    private Date date;
+
+    public String getSpendingCategoryName() {
+        return spendingCategory.getCategoryName();
+    }
 }
