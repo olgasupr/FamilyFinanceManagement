@@ -86,9 +86,9 @@
 
           <tbody>
           <tr th:each="spendingItem: ${spending}">
-            <td th:text="${spendingItem.spendingCategoryName}"></td>
+            <td th:text="${spendingItem.spendingCategory.categoryName}"></td>
             <td th:text="${spendingItem.amount}"></td>
-            <td th:text="${#dates.format(spendingItem.date, 'dd-MM-yyyy')}"></td>
+            <td th:text="${#dates.format(spendingItem.spendingDate, 'dd-MM-yyyy')}"></td>
           </tr>
           </tbody>
         </table>
