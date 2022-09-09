@@ -1,14 +1,28 @@
 package com.olga.familyfinancemanagement.models;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Setter;
+import lombok.*;
+
+import javax.persistence.*;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
-@Setter(AccessLevel.NONE)
+@Setter(AccessLevel.PRIVATE)
+@Entity
+@Table(name = "income")
 public class Income {
 
-    double amount;
+    @Id
+    @Column(name = "id")
+    @GeneratedValue
+    private Integer id;
+
+    @Column(name = "amount")
+    private double amount;
+
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "period_id", referencedColumnName = "id")
+    private Period period;
+
 }

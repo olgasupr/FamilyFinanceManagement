@@ -2,10 +2,24 @@ package com.olga.familyfinancemanagement.models;
 
 import lombok.*;
 
+import javax.persistence.*;
+
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
-@Setter(AccessLevel.NONE)
+@Setter(AccessLevel.PRIVATE)
+@Entity
+@Table(name = "spending_category")
 public class SpendingCategory {
-    int id;
-    String categoryName;
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue
+    private Integer id;
+
+    @Column(name = "category_name")
+    private String categoryName;
+
+    @Column(name = "description")
+    private String description;
 }
