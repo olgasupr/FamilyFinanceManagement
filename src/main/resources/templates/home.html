@@ -41,8 +41,8 @@
 
   <!-- Upper row -->
   <div class="row center" style="color: white">
-    <div class="col s12"style="font-size: xxx-large; padding-bottom: 30px">
-      <b>Your family's monthly income is <a class="white btn-flat" th:text="${income}"></a></b>
+    <div class="col s12" style="font-size: xxx-large; padding-bottom: 30px">
+      <b>Your family's monthly income is <a class="white btn-flat" style="font-size: x-large" th:text="${income}"></a></b>
       <button data-target="modal1" class="btn modal-trigger" style="font-size: xx-large; background-color: #01579b; color: white"><b>EDIT</b></button>
     </div>
 
@@ -56,7 +56,7 @@
           <form class="col s12">
             <div class="input-wrap">
               <div class="input-field col s6">
-                <input name="Income" type="text" id="" pattern="^[\d,]+$" class="validate" style="font-size: xx-large; color: white">
+                <input id="Income" type="text" pattern="^[\d,]+$" class="validate" style="font-size: xx-large; color: white">
               </div>
             </div>
           </form>
@@ -64,7 +64,7 @@
 
         <div class="modal-footer" style="background-color:#01579b">
           <button class="modal-close light-blue darken-4 btn-large" type="submit" name="action" style="color:white; font-size: x-large; font-family: 'Times New Roman'">
-              Submit<i class="material-icons right">send</i>
+            Submit<i class="material-icons right">send</i>
           </button>
         </div>
       </div>
