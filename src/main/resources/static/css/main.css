@@ -24,3 +24,14 @@ table, th, td {
     border:1px solid whitesmoke;
     border-collapse: collapse;
 }
+
+#item1 {display:inline-block;margin-right:10px;}
+#item2 {display:inline-block; margin-right:10px;}
+#item3 {display: inline-block}
+
+#item3 {
+    font-size: xx-large;
+    background-color: #01579b;
+    color: white;
+    font-family: "Times New Roman";
+}

@@ -25,7 +25,6 @@
         <li><a href="#"><b style="font-size: large">Home</b></a></li>
         <li><a href="#"><b style="font-size: large">Edit income</b></a></li>
         <li><a href="#"><b style="font-size: large">Add spending</b></a></li>
-        <li><a href="#"><b style="font-size: large">View recent spending</b></a></li>
         <li><a href="#"><b style="font-size: large">View analysis</b></a></li>
       </ul>
     </div>
@@ -38,37 +37,46 @@
   <br>
   <br>
 
-
   <!-- Upper row -->
   <div class="row center" style="color: white">
     <div class="col s12" style="font-size: xxx-large; padding-bottom: 30px">
-      <b>Your family's monthly income is <a class="white btn-flat" style="font-size: x-large" th:text="${income}"></a></b>
-      <button data-target="modal1" class="btn modal-trigger" style="font-size: xx-large; background-color: #01579b; color: white"><b>EDIT</b></button>
+    <b id="item1">Your family's monthly income is </b>
+      <table id="item2" style="width: 150px; background-color: white">
+        <tbody>
+        <tr>
+          <td th:text="${income}">
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <!--Modal trigger-->
+      <button id="item3" data-target="modal1" class="btn modal-trigger"><b>EDIT</b></button>
     </div>
 
-    <!-- Modal  -->
+    <!-- Modal body -->
     <div id="modal1" class="modal">
+
       <div class="modal-content">
         <h4>Please enter your family's income per month: </h4>
         <p></p>
         <p></p>
         <div class="row">
-          <form class="col s12">
-            <div class="input-wrap">
-              <div class="input-field col s6">
-                <input id="Income" type="text" pattern="^[\d,]+$" class="validate" style="font-size: xx-large; color: white">
-              </div>
+          <div class="input-wrap">
+            <div class="input-field col s6">
+              <input id="Income" type="text" pattern="^[\d,]+$" class="validate" style="font-size: xx-large; color: white">
+              <label>income</label>
             </div>
-          </form>
+          </div>
         </div>
+      </div>
 
         <div class="modal-footer" style="background-color:#01579b">
           <button class="modal-close light-blue darken-4 btn-large" type="submit" name="action" style="color:white; font-size: x-large; font-family: 'Times New Roman'">
             Submit<i class="material-icons right">send</i>
           </button>
         </div>
+
       </div>
-    </div>
     <!-- Modal end -->
 
     <div class="row center" style="color: white; padding-bottom: 30px">
@@ -206,13 +214,14 @@
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.modal');
     var instances = M.Modal.init(elems, {});
-    var instance = M.Modal.getInstance(elem);
+    $(document).ready(function(){
+      $('.modal').modal();
   });
 
   /* Income editing -> comma separation enabling */
   document.getElementById('Income').addEventListener('input', event =>
-          event.target.value = (parseInt(event.target.value.replace(/[^\d]+/gi, '')) || 0).toLocaleString('en-US')
-  );
+          event.target.value = (parseInt(event.target.value.replace(/[^\d]+/gi, '')) || 0).toLocaleString('en-US'))
+  });
 
 </script>
 </body>
