@@ -61,12 +61,13 @@
         <p></p>
         <p></p>
         <div class="row">
-          <div class="input-wrap">
-            <div class="input-field col s6">
-              <input id="Income" type="text" pattern="^[\d,]+$" class="validate" style="font-size: xx-large; color: white">
-              <label>income</label>
+          <form class="col s12">
+            <div class="input-wrap">
+              <div class="input-field col s6">
+                <input id="Income" type="text" pattern="^[\d,]+$" class="validate"  style="font-size: xx-large; color: white">
+              </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
 
@@ -198,9 +199,6 @@
   </div>
 </main>
 
-
-
-
 <!-- Initialization -->
 <script type="text/javascript" src="../js/materialize.min.js"></script>
 <script>
@@ -214,14 +212,13 @@
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.modal');
     var instances = M.Modal.init(elems, {});
-    $(document).ready(function(){
-      $('.modal').modal();
+    var instance = M.Modal.getInstance(elem);
   });
 
   /* Income editing -> comma separation enabling */
   document.getElementById('Income').addEventListener('input', event =>
-          event.target.value = (parseInt(event.target.value.replace(/[^\d]+/gi, '')) || 0).toLocaleString('en-US'))
-  });
+          event.target.value = (parseInt(event.target.value.replace(/[^\d]+/gi, '')) || 0).toLocaleString('en-US')
+  );
 
 </script>
 </body>
