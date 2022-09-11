@@ -56,26 +56,28 @@
     <!-- Modal body -->
     <div id="modal1" class="modal">
 
-      <div class="modal-content">
-        <h4>Please enter your family's income per month: </h4>
-        <p></p>
-        <p></p>
-        <div class="row">
-          <form class="col s12">
-            <div class="input-wrap">
-              <div class="input-field col s6">
-                <input id="Income" type="text" pattern="^[\d,]+$" class="validate"  style="font-size: xx-large; color: white">
+      <form method="post" action="updateIncome">
+        <div class="modal-content">
+          <h4>Please enter your family's income per month: </h4>
+          <p></p>
+          <p></p>
+          <div class="row">
+            <form class="col s12">
+              <div class="input-wrap">
+                <div class="input-field col s6">
+                  <input id="Income" name="newIncome" type="text" pattern="^[\d,]+$" class="validate"  style="font-size: xx-large; color: white">
+                </div>
               </div>
-            </div>
-          </form>
-        </div>
+            </form>
+          </div>
 
-        <div class="modal-footer" style="background-color:#01579b">
-          <button class="modal-close light-blue darken-4 btn-large" type="submit" name="action" style="color:white; font-size: x-large; font-family: 'Times New Roman'">
-            Submit<i class="material-icons right">send</i>
-          </button>
+          <div class="modal-footer" style="background-color:#01579b">
+            <button class="modal-close light-blue darken-4 btn-large" type="submit" name="action" style="color:white; font-size: x-large; font-family: 'Times New Roman'">
+              Submit<i class="material-icons right">send</i>
+            </button>
+          </div>
         </div>
-      </div>
+      </form>
     </div>
     <!-- Modal end -->
 
