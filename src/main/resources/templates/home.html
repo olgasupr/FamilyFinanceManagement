@@ -56,7 +56,7 @@
     <!-- Modal body -->
     <div id="modal1" class="modal">
 
-      <form method="post" action="updateIncome">
+      <form method="post" action="income">
         <div class="modal-content">
           <h4>Please enter your family's income per month: </h4>
           <p></p>
@@ -65,7 +65,7 @@
             <form class="col s12">
               <div class="input-wrap">
                 <div class="input-field col s6">
-                  <input id="Income" name="newIncome" type="text" pattern="^[\d,]+$" class="validate"  style="font-size: xx-large; color: white">
+                  <input id="Income" name="amount" type="text" pattern="^[\d,]+$" class="validate"  style="font-size: xx-large; color: white">
                 </div>
               </div>
             </form>
@@ -96,7 +96,7 @@
 
           <tbody>
           <tr th:each="spendingItem: ${spending}">
-            <td th:text="${spendingItem.spendingCategory.categoryName}"></td>
+            <td th:text="${spendingItem.spendingCategory.categoryName}" th:title="${spendingItem.spendingCategory.description}"></td>
             <td th:text="${spendingItem.amount}"></td>
             <td th:text="${#dates.format(spendingItem.spendingDate, 'dd-MM-yyyy')}"></td>
           </tr>

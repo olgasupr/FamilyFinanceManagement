@@ -19,16 +19,16 @@ public class MainController {
     @GetMapping
     String getHomePage(Model model) {
 
-        Income income = new Income(); //TODO:  fix to correct one
+        Income income = incomeService.getCurrentIncome();
 
         model.addAttribute("spending", spendingService.getActualSpendingsForCurrentMonth());
         model.addAttribute("income", income.getAmount());
         return "home";
     }
 
-    @PostMapping(value = "/updateIncome")
-    public String updateIncome(double newIncome) {
-        //TODO:  call incomeService and update the income
+    @PostMapping(value = "/income")
+    public String updateIncome(double amount) {
+        incomeService.createOrUpdateIncome(amount);
         return "redirect:/";
     }
 }
