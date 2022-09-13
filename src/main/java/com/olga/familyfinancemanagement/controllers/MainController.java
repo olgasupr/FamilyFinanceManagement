@@ -32,4 +32,14 @@ public class MainController {
         incomeService.createOrUpdateIncome(amountAsDouble);
         return "redirect:/";
     }
+
+    @GetMapping(value = "/spending")
+    public String getSpending() {
+        return "spending";
+    }
+
+    @GetMapping(value = "/analysis")
+    public String getAnalysis() {
+        return "analysis";
+    }
 }
