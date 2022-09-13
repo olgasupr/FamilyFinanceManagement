@@ -41,7 +41,7 @@
   <div class="row center" style="color: white">
     <div class="col s12" style="padding-bottom: 30px">
     <b id="heading">Your family's monthly income is €</b>
-      <div id="incomeInput" th:text="${income}"></div>
+      <div id="incomeInput" th:text="${#numbers.formatDecimal(income, 0, 'COMMA', 2, 'POINT')}"></div>
 
       <!--Modal trigger-->
       <button id="editButton" data-target="modal1" class="btn modal-trigger"><b>EDIT</b></button>
