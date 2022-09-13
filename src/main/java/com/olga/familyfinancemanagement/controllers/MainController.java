@@ -27,8 +27,9 @@ public class MainController {
     }
 
     @PostMapping(value = "/income")
-    public String updateIncome(double amount) {
-        incomeService.createOrUpdateIncome(amount);
+    public String updateIncome(String amount) {
+        double amountAsDouble = Double.parseDouble(amount.replaceAll(",", ""));
+        incomeService.createOrUpdateIncome(amountAsDouble);
         return "redirect:/";
     }
 }
