@@ -59,7 +59,7 @@
             <form class="col s12">
               <div class="input-wrap">
                 <div class="input-field col s6">
-                  <input id="Income" name="amount" type="text" pattern="^[\d,]+$" class="validate">
+                  <input id="Income" name="amount" type="text" pattern="^[\d,]+$" class="validate"  style="font-size: xx-large; color: white">
                 </div>
               </div>
             </form>
@@ -212,7 +212,7 @@
 
   /* Income editing -> comma separation enabling */
   document.getElementById('Income').addEventListener('input', event =>
-          event.target.value = (parseInt(event.target.value.replace(/[^\d]+/gi, '')) || 0).toLocaleString('en-US')
+      event.target.value = event.target.value.replace(/[^\d.]/g, '')
   );
 
 </script>
