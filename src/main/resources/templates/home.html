@@ -39,18 +39,12 @@
 
   <!-- Upper row -->
   <div class="row center" style="color: white">
-    <div class="col s12" style="font-size: xxx-large; padding-bottom: 30px">
-    <b id="item1">Your family's monthly income is </b>
-      <table id="item2" style="width: 150px; background-color: white">
-        <tbody>
-        <tr>
-          <td th:text="${income}">
-          </td>
-        </tr>
-        </tbody>
-      </table>
+    <div class="col s12" style="padding-bottom: 30px">
+    <b id="heading">Your family's monthly income is €</b>
+      <div id="incomeInput" th:text="${income}"></div>
+
       <!--Modal trigger-->
-      <button id="item3" data-target="modal1" class="btn modal-trigger"><b>EDIT</b></button>
+      <button id="editButton" data-target="modal1" class="btn modal-trigger"><b>EDIT</b></button>
     </div>
 
     <!-- Modal body -->
@@ -65,7 +59,7 @@
             <form class="col s12">
               <div class="input-wrap">
                 <div class="input-field col s6">
-                  <input id="Income" name="amount" type="text" pattern="^[\d,]+$" class="validate"  style="font-size: xx-large; color: white">
+                  <input id="Income" name="amount" type="text" pattern="^[\d,]+$" class="validate">
                 </div>
               </div>
             </form>

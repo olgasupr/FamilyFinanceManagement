@@ -8,6 +8,16 @@ div {
     font-family: "Times New Roman";
 }
 
+form {
+    width: 100%;
+}
+
+#Income {
+    font-size: xx-large;
+    font-family: "Times New Roman";
+    color: white;
+}
+
 button  {
     background-color: #01579b;
     color: white;
@@ -20,18 +30,26 @@ button  {
     font-size: x-large;
 }
 
-table, th, td {
-    border:1px solid whitesmoke;
-    border-collapse: collapse;
+#heading {
+    display: inline-flex;
+    margin-right:10px;
+    font-size: xxx-large;
 }
 
-#item1 {display:inline-block;margin-right:10px;}
-#item2 {display:inline-block; margin-right:10px;}
-#item3 {display: inline-block}
 
-#item3 {
+#incomeInput {
+    display: inline-flex;
+    margin-right: 10px;
+    color: white;
+    font-size: xxx-large;
+    font-weight: bolder;
+}
+
+#editButton {
+    display: inline-flex;
     font-size: xx-large;
     background-color: #01579b;
     color: white;
     font-family: "Times New Roman";
+    margin-bottom: 25px;
 }
