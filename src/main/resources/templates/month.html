@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" th:href="@{/css/materialize.min.css}" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/main.css}" media="screen, projection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+
+<h1 th:text="${#dates.monthName(thisMonth) + ' ' + #dates.year(thisMonth)}"></h1>
+<button type="submit" name="action" value="lastMonth">Last Month</button>
+<button type="submit" name="action" value="nextMonth">Next Month</button>
+
+
+<!-- Initialization -->
+<script type="text/javascript" src="../js/materialize.min.js"></script>
+<script type="text/javascript" src="../js/utils.js"></script>
+<script>
+    /* nav bar initialization */
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.sidenav');
+        var instances = M.Sidenav.init(elems, {});
+    });
+
+    /* Modal initialization */
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems, {});
+        var instance = M.Modal.getInstance(elem);
+    });
+
+</script>
+
+</body>
+</html>
