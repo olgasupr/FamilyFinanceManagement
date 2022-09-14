@@ -34,12 +34,23 @@ public class MainController {
     }
 
     @GetMapping(value = "/spending")
-    public String getSpending() {
+    public String getSpending(Model model) {
+
+        Income income = incomeService.getCurrentIncome();
+
+        model.addAttribute("spending", spendingService.getActualSpendingsForCurrentMonth());
+        model.addAttribute("income", income.getAmount());
         return "spending";
     }
 
     @GetMapping(value = "/analysis")
-    public String getAnalysis() {
+    public String getAnalysis(Model model) {
+
+        Income income = incomeService.getCurrentIncome();
+
+        model.addAttribute("spending", spendingService.getActualSpendingsForCurrentMonth());
+        model.addAttribute("income", income.getAmount());
         return "analysis";
     }
+
 }

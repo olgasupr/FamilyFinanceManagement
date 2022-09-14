@@ -1,0 +1,38 @@
+h4, h5 {
+    text-align: left;
+    margin-left: 100px;
+    font-family: "Times New Roman";
+    color: white;
+}
+
+#categoriesSelector{
+    margin-left: 100px;
+    width: 250px;
+}
+
+#datePicker {
+    margin-left: 100px;
+    width: 250px;
+}
+
+.datepicker {
+    color: white;
+}
+
+th {
+    font-family: "Times New Roman";
+    font-size: xx-large;
+    text-decoration: underline;
+    text-align: center;
+}
+
+#amountSpent {
+    color: white;
+    font-size: x-large;
+    font-family: "Times New Roman";
+}
+
+.input-field {
+    width: 250px;
+    margin-left: 107px;
+}

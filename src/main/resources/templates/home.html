@@ -16,14 +16,13 @@
 <div class="navbar-fixed">
   <nav class="light-blue darken-4">
     <div class="nav-wrapper">
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul style="padding-left: 20px; font-size: x-large">
         <li style="color: white"><b>Family Finance Management</b></li>
       </ul>
 
       <ul class="right hide-on-med-and-down">
-        <li><a href="#"><b style="font-size: large">Home</b></a></li>
-        <li><a href="#" id="editLink" data-target="modal1" class="modal-trigger"><b style="font-size: large">Edit Income</b></a></li>
+        <li><a href=""><b style="font-size: large">Home</b></a></li>
+        <li><a id="editLink" data-target="modal1" class="modal-trigger"><b style="font-size: large">Edit Income</b></a></li>
         <li><a href="spending"><b style="font-size: large">Edit spending</b></a></li>
         <li><a href="analysis"><b style="font-size: large">View analysis</b></a></li>
       </ul>
@@ -59,7 +58,7 @@
             <form class="col s12">
               <div class="input-wrap">
                 <div class="input-field col s6">
-                  <input id="Income" name="amount" type="text" pattern="^[\d,]+$" class="validate"  style="font-size: xx-large; color: white">
+                  <input id="Income" name="amount" type="text" pattern="^[\d,]+$" class="validate">
                 </div>
               </div>
             </form>
@@ -103,7 +102,7 @@
             <td>Last spending was on ... </td>
           </tr>
           <tr>
-            <td><button style="background-color: #01579b"><b style="color: white">ADD MORE</b></button></td>
+            <td><a href="spending"><button>ADD MORE</button></a></td>
           </tr>
           </tbody>
         </table>
@@ -182,7 +181,7 @@
         <table style="margin-left: 50px; width: 90%">
           <tbody>
           <tr>
-            <td><button><b>VIEW ANALYSIS</b></button></td>
+            <td><a href="analysis"><button>VIEW ANALYSIS</button></a></td>
           </tr>
           </tbody>
         </table>
