@@ -13,9 +13,8 @@
 <body>
 
 <h1 th:text="${#dates.monthName(thisMonth) + ' ' + #dates.year(thisMonth)}"></h1>
-<button type="submit" name="action" value="lastMonth">Last Month</button>
-<button type="submit" name="action" value="nextMonth">Next Month</button>
-
+<a th:href="${'/month?yyyymm=' + #dates.format(lastMonth, 'yyyyMM')}">Last Month</a>
+<a th:href="${'/month?yyyymm=' + #dates.format(nextMonth, 'yyyyMM')}">Next Month</a>
 
 <!-- Initialization -->
 <script type="text/javascript" src="../js/materialize.min.js"></script>
