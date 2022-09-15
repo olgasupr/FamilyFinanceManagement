@@ -8,7 +8,6 @@
     <link type="text/css" rel="stylesheet" th:href="@{/css/materialize.min.css}" media="screen,projection" />
     <link type="text/css" rel="stylesheet" th:href="@{/css/main.css}" media="screen, projection" />
     <link type="text/css" rel="stylesheet" th:href="@{/css/editSpending.css}" media="screen, projection" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
@@ -23,7 +22,7 @@
             </ul>
 
             <ul class="right hide-on-med-and-down">
-                <li><a href="http://localhost:8080/"><b style="font-size: large">Home</b></a></li>
+                <li><a href="http://localhost:8080"><b style="font-size: large">Home</b></a></li>
                 <li><a id="editLink" data-target="modal1" class="modal-trigger"><b style="font-size: large">Edit Income</b></a></li>
                 <li><a href="spending"><b style="font-size: large">Edit spending</b></a></li>
                 <li><a href="analysis"><b style="font-size: large">View analysis</b></a></li>
@@ -33,64 +32,66 @@
 </div>
 <!-- navbar end -->
 
-<main>
-    <br>
-    <br>
 
+<main>
     <!-- Upper row -->
+    <br>
+    <div class="row center" style="color: white; font-size: xx-large">
+        <div class="col s12">
+            <a th:href="${'/month?yyyymm=' + #dates.format(lastMonth, 'yyyyMM')}"><b style="font-size: large">←</b></a>
+            <b id="headingMonth" th:text="${#dates.monthName(thisMonth) + ' ' + #dates.year(thisMonth)}"></b>
+            <a th:href="${'/month?yyyymm=' + #dates.format(nextMonth, 'yyyyMM')}"><b style="font-size: large">→</b></a>
+        </div>
+    </div>
+
     <div class="row center" style="color: white">
-        <div class="col s12" style="padding-bottom: 30px">
+        <div class="col s12">
             <b id="heading">Your family's monthly income is €</b>
             <div id="incomeInput" th:text="${#numbers.formatDecimal(income, 0, 'COMMA', 2, 'POINT')}"></div>
 
-            <!--Modal trigger-->
+            <!--Modal EDIT INCOME trigger-->
             <button id="editButton" data-target="modal1" class="btn modal-trigger"><b>EDIT</b></button>
         </div>
-    </div>
-        <!-- Modal body -->
+
+        <!-- Modal EDIT INCOME body -->
         <div id="modal1" class="modal">
 
             <form method="post" action="income">
                 <div class="modal-content">
-                    <h4>Please enter your family's income per month: </h4>
+                    <h4 style="margin-left: 30px">Please enter your family's income per month: </h4>
                     <p></p>
                     <p></p>
                     <div class="row">
                         <form class="col s12">
                             <div class="input-wrap">
                                 <div class="input-field col s6">
-                                    <input id="Income" name="amount" type="text" pattern="^[\d,]+$" class="validate">
+                                    <input id="Income" name="amount" type="text" pattern="^[\d,]+\.?\d?\d?$" class="validate">
                                 </div>
                             </div>
                         </form>
                     </div>
 
                     <div class="modal-footer" style="background-color:#01579b">
-                        <button class="modal-close light-blue darken-4 btn-large" type="submit" name="action">
+                        <button class="modal-close light-blue darken-4 btn-large" type="submit" name="action" style="color:white; font-size: x-large; font-family: 'Times New Roman'">
                             Submit<i class="material-icons right">send</i>
                         </button>
                     </div>
                 </div>
             </form>
         </div>
-        <!-- Modal end -->
+        <!-- Modal EDIT INCOME end -->
 
-    <div class="row center" style="color: white; padding-bottom: 30px">
-        <div class="col s4">
-            <table style="margin-left: 50px; width: 90%">
-                <thead>
-                <tr>
-                    <th>Add spending</th>
-                </tr>
-                </thead>
+        <div class="row center" style="color: white; padding-bottom: 30px">
+            <div class="col s12" id="recentSpendingHeading">
+                <b style="text-decoration: underline; margin-right: 10px">Your family's recent spending </b>
 
-                <tbody>
-                <tr>
-                    <td>
-                        <div>
-                            <h5>Add spending category:</h5>
-                        </div>
+                <!-- Modal ADD SPENDING Trigger -->
+                <button id="addSpendingButton" data-target="modal2" class="btn modal-trigger">ADD SPENDING</button>
 
+                <!-- Modal ADD SPENDING Structure -->
+                <div id="modal2" class="modal">
+                    <div class="modal-content">
+                        <h5>Add spending category: </h5>
                         <div class="input-field" id="categoriesSelector">
                             <select class="browser-default">
                                 <option value="" disabled selected>Choose a category</option>
@@ -105,12 +106,9 @@
                                 <option value="9">Giving</option>
                             </select>
                         </div>
-
                         <br>
-
                         <div>
-                            <h5>Add amount:</h5>
-                        </div>
+                        <h5>Add amount:</h5>
                         <div class="row">
                             <form class="col s12">
                                 <div class="row">
@@ -120,85 +118,63 @@
                                 </div>
                             </form>
                         </div>
+                        </div>
 
                         <div>
-                            <h5 style="color: white; font-size: x-large">Add date:</h5>
-                        </div>
-                        <div id="datePicker">
-                            <input type="text" class="datepicker">
-                        </div>
-
-                        <br>
-
-                        <div>
-                        <button style="margin-left: 100px">SUBMIT</button>
+                        <h5>Add date:</h5>
+                            <div id="datePicker">
+                                <input type="text" class="datepicker">
+                            </div>
                         </div>
 
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+                        <!--Modal ADD SPENDING footer-->
+                    </div>
+                    <div class="modal-footer" style="background-color: #01579b">
+                        <button id="submitAddSpendingModalButton" class="modal-close light-blue darken-4 btn-large" type="submit" name="action">
+                            Submit<i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!--Modal ADD SPENDING end-->
 
+                <p></p>
+                <table class="responsive-table">
+                    <thead>
+                    <tr>
+                        <th style="width: 30%">Category</th>
+                        <th style="width: 30%">Amount</th>
+                        <th style="width: 30%">Date</th>
+                        <th style="width: 10%">Action</th>
+                    </tr>
+                    </thead>
 
-        <div class="col s4">
-            <table style="margin-left: 50px; width: 90%">
-                <thead>
-                <tr>
-                    <th>Edit spending</th>
-                </tr>
-                </thead>
+                    <tbody>
+                    <tr th:each="spendingItem: ${spending}">
+                        <td th:text="${spendingItem.spendingCategory.categoryName}" th:title="${spendingItem.spendingCategory.description}"></td>
+                        <td th:text="${spendingItem.amount}"></td>
+                        <td th:text="${#dates.format(spendingItem.spendingDate, 'dd-MM-yyyy')}"></td>
+                    </tr>
+                    </tbody>
+                </table>
 
-                <tbody>
-                <tr>
-                    <td>
+            </div>
 
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-
-
-        <div class="col s4">
-            <table style="margin-left: 50px; width: 90%">
-                <thead>
-                <tr>
-                    <th>Delete spending</th>
-                </tr>
-                </thead>
-
-                <tbody>
-                <tr>
-                    <td>
-
-                    </td>
-                </tr>
-                </tbody>
-            </table>
         </div>
 
     </div>
-
-
-
-
-
-
-
-
-
 </main>
 
 <!-- Initialization -->
 <script type="text/javascript" src="../js/materialize.min.js"></script>
+<!--calling method from js file-->
+<script type="text/javascript" src="../js/utils.js"></script>
 <script>
     /* nav bar initialization */
     document.addEventListener('DOMContentLoaded', function () {
         var elems = document.querySelectorAll('.sidenav');
         var instances = M.Sidenav.init(elems, {});
     });
-
 
     /* Modal initialization */
     document.addEventListener('DOMContentLoaded', function() {
@@ -209,7 +185,7 @@
 
     /* Income editing -> comma separation enabling */
     document.getElementById('Income').addEventListener('input', event =>
-        event.target.value = (parseInt(event.target.value.replace(/[^\d]+/gi, '')) || 0).toLocaleString('en-US')
+        event.target.value = formatInputAmount(event.target.value.replace(/[^\d\.]+/gi, ''))
     );
 
     /* Date picker */
@@ -227,8 +203,6 @@
     });
 
 </script>
-
-
 </body>
 
 </html>

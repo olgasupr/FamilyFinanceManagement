@@ -21,7 +21,10 @@ public class MainController {
     private final IncomeService incomeService;
 
     @GetMapping
-    String getHomePage(Model model) {
+    String getHomePage(
+            @RequestParam(value = "yyyymm", required = false) String yyyymm,
+            Model model) {
+        addInputMonthToModel(yyyymm, model);
 
         Income income = incomeService.getCurrentIncome();
 
@@ -38,7 +41,10 @@ public class MainController {
     }
 
     @GetMapping(value = "/spending")
-    public String getSpending(Model model) {
+    public String getSpending(
+            @RequestParam(value = "yyyymm", required = false) String yyyymm,
+            Model model) {
+        addInputMonthToModel(yyyymm, model);
 
         Income income = incomeService.getCurrentIncome();
 
@@ -48,7 +54,10 @@ public class MainController {
     }
 
     @GetMapping(value = "/analysis")
-    public String getAnalysis(Model model) {
+    public String getAnalysis(
+    @RequestParam(value = "yyyymm", required = false) String yyyymm,
+    Model model) {
+        addInputMonthToModel(yyyymm, model);
 
         Income income = incomeService.getCurrentIncome();
 

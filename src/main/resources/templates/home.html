@@ -33,13 +33,19 @@
 
 
 <main>
-  <br>
-  <br>
-
   <!-- Upper row -->
+  <br>
+  <div class="row center" style="color: white; font-size: xx-large">
+    <div class="col s12">
+      <a th:href="${'/month?yyyymm=' + #dates.format(lastMonth, 'yyyyMM')}"><b style="font-size: large">←</b></a>
+      <b id="headingMonth" th:text="${#dates.monthName(thisMonth) + ' ' + #dates.year(thisMonth)}"></b>
+      <a th:href="${'/month?yyyymm=' + #dates.format(nextMonth, 'yyyyMM')}"><b style="font-size: large">→</b></a>
+    </div>
+  </div>
+
   <div class="row center" style="color: white">
-    <div class="col s12" style="padding-bottom: 30px">
-    <b id="heading">Your family's monthly income is €</b>
+    <div class="col s12">
+      <b id="heading">Your family's monthly income is €</b>
       <div id="incomeInput" th:text="${#numbers.formatDecimal(income, 0, 'COMMA', 2, 'POINT')}"></div>
 
       <!--Modal trigger-->
@@ -51,7 +57,7 @@
 
       <form method="post" action="income">
         <div class="modal-content">
-          <h4>Please enter your family's income per month: </h4>
+          <h4 style="margin-left: 30px">Please enter your family's income per month: </h4>
           <p></p>
           <p></p>
           <div class="row">
@@ -75,7 +81,7 @@
     <!-- Modal end -->
 
     <div class="row center" style="color: white; padding-bottom: 30px">
-      <div class="col s6" style="font-size: xx-large"><b style="text-decoration: underline">Your family's recent spending</b>
+      <div class="col s6" style="font-size: xx-large; margin-top: 30px"><b style="text-decoration: underline">Your family's recent spending</b>
         <p></p>
         <table style="margin-left: 50px; width: 90%">
 
@@ -108,7 +114,7 @@
         </table>
       </div>
 
-      <div class="col s6" style="font-size: xx-large"><b style="text-decoration: underline">Last month's analysis</b>
+      <div class="col s6" style="font-size: xx-large; margin-top: 30px"><b style="text-decoration: underline">Last month's analysis</b>
         <p></p>
         <table class="responsive-table" style="margin-left: 50px; width: 90%">
           <thead>
@@ -120,62 +126,6 @@
           </tr>
           </thead>
 
-          <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          </tbody>
         </table>
 
         <table style="margin-left: 50px; width: 90%">
@@ -195,6 +145,7 @@
 
 <!-- Initialization -->
 <script type="text/javascript" src="../js/materialize.min.js"></script>
+<!--calling method from js file-->
 <script type="text/javascript" src="../js/utils.js"></script>
 <script>
   /* nav bar initialization */

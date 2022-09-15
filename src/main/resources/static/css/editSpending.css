@@ -1,4 +1,31 @@
-h4, h5 {
+#recentSpendingHeading {
+    font-size: xx-large;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.responsive-table {
+    width: 60%;
+    margin-left: 345px;
+}
+
+#addSpendingButton {
+    background-color: #01579b;
+    display: inline-flex;
+    font-size: x-large;
+    color: white;
+    font-family: "Times New Roman";
+    font-weight: bold;
+}
+
+#submitAddSpendingModalButton {
+    color:white;
+    font-size: x-large;
+    font-family: 'Times New Roman';
+    margin-bottom: 20px;
+}
+
+    h5 {
     text-align: left;
     margin-left: 100px;
     font-family: "Times New Roman";
@@ -36,3 +63,9 @@ th {
     width: 250px;
     margin-left: 107px;
 }
+
+
+
+
+
+

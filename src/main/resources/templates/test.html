@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" th:href="@{/css/materialize.min.css}" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" th:href="@{/css/main.css}" media="screen, projection" />
+  <link type="text/css" rel="stylesheet" th:href="@{/css/editSpending.css}" media="screen, projection" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+
+<!-- navbar start -->
+<div class="navbar-fixed">
+  <nav class="light-blue darken-4">
+    <div class="nav-wrapper">
+      <ul style="padding-left: 20px; font-size: x-large">
+        <li style="color: white"><b>Family Finance Management</b></li>
+      </ul>
+
+      <ul class="right hide-on-med-and-down">
+        <li><a href="http://localhost:8080/"><b style="font-size: large">Home</b></a></li>
+        <li><a id="editLink" data-target="modal1" class="modal-trigger"><b style="font-size: large">Edit Income</b></a></li>
+        <li><a href="spending"><b style="font-size: large">Edit spending</b></a></li>
+        <li><a href="analysis"><b style="font-size: large">View analysis</b></a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+<!-- navbar end -->
+
+<main>
+  <br>
+  <br>
+
+  <!-- Upper row -->
+  <div class="row center" style="color: white">
+    <div class="col s12" style="padding-bottom: 30px">
+      <b id="heading">Your family's monthly income is €</b>
+      <div id="incomeInput" th:text="${#numbers.formatDecimal(income, 0, 'COMMA', 2, 'POINT')}"></div>
+
+      <!--Modal trigger-->
+      <button id="editButton" data-target="modal1" class="btn modal-trigger"><b>EDIT</b></button>
+    </div>
+  </div>
+  <!-- Modal body -->
+  <div id="modal1" class="modal">
+
+    <form method="post" action="income">
+      <div class="modal-content">
+        <h4>Please enter your family's income per month: </h4>
+        <p></p>
+        <p></p>
+        <div class="row">
+          <form class="col s12">
+            <div class="input-wrap">
+              <div class="input-field col s6">
+                <input id="Income" name="amount" type="text" pattern="^[\d,]+$" class="validate">
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer" style="background-color:#01579b">
+          <button class="modal-close light-blue darken-4 btn-large" type="submit" name="action">
+            Submit<i class="material-icons right">send</i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- Modal end -->
+
+  <div class="row center" style="color: white; padding-bottom: 30px">
+    <div class="col s4">
+
+
+      <table style="margin-left: 50px; width: 90%">
+        <thead>
+        <tr>
+          <th>Add spending</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+          <td>
+            <div>
+              <h5>Add spending category:</h5>
+            </div>
+
+            <div class="input-field" id="categoriesSelector">
+              <select class="browser-default">
+                <option value="" disabled selected>Choose a category</option>
+                <option value="1">Food</option>
+                <option value="2">Personal</option>
+                <option value="3">Transportation</option>
+                <option value="4">Housing</option>
+                <option value="5">Utilities</option>
+                <option value="6">Savings</option>
+                <option value="7">Insurance</option>
+                <option value="8">Recreation</option>
+                <option value="9">Giving</option>
+              </select>
+            </div>
+
+            <br>
+
+            <div>
+              <h5>Add amount:</h5>
+            </div>
+            <div class="row">
+              <form class="col s12">
+                <div class="row">
+                  <div class="input-field">
+                    <input id="amountSpent" type="text" class="validate">
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <div>
+              <h5 style="color: white; font-size: x-large">Add date:</h5>
+            </div>
+            <div id="datePicker">
+              <input type="text" class="datepicker">
+            </div>
+
+            <br>
+
+            <div>
+              <button style="margin-left: 100px">SUBMIT</button>
+            </div>
+
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <div class="col s4">
+      <table style="margin-left: 50px; width: 90%">
+        <thead>
+        <tr>
+          <th>Edit spending</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+          <td>
+
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <div class="col s4">
+      <table style="margin-left: 50px; width: 90%">
+        <thead>
+        <tr>
+          <th>Delete spending</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+          <td>
+
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+</main>
+
+<!-- Initialization -->
+<script type="text/javascript" src="../js/materialize.min.js"></script>
+<script>
+  /* nav bar initialization */
+  document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems, {});
+  });
+
+
+  /* Modal initialization */
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems, {});
+    var instance = M.Modal.getInstance(elem);
+  });
+
+  /* Income editing -> comma separation enabling */
+  document.getElementById('Income').addEventListener('input', event =>
+          event.target.value = (parseInt(event.target.value.replace(/[^\d]+/gi, '')) || 0).toLocaleString('en-US')
+  );
+
+  /* Date picker */
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.datepicker');
+    var instances = M.Datepicker.init(elems, {});
+
+  });
+
+  /* Option selector */
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, {});
+
+  });
+
+</script>
+
+
+</body>
+
+</html>
