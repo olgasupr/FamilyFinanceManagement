@@ -12,9 +12,7 @@ import java.util.Optional;
 @Repository
 public interface PeriodRepository extends CrudRepository<Period, Integer> {
 
-    //Optional<Income> findByPeriod_Id(final Integer periodId);
-
-    @Query(nativeQuery = true, value = "SELECT * FROM period WHERE from_date <= :date AND to_date >= :date")
-    Optional<Period> findPeriodForDate(@Param("date")Date date);
+    @Query(nativeQuery = true, value = "SELECT * FROM period WHERE from_date <= CURDATE() AND to_date >= CURDATE()")
+    Optional<Period> findCurrentPeriod();
 
 }

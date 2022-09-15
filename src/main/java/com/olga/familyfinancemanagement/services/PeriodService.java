@@ -22,7 +22,7 @@ public class PeriodService {
     private final PeriodRepository periodRepository;
 
     public Period getCurrentPeriod() {
-        return periodRepository.findPeriodForDate(Date.from(Instant.now())).orElseGet(this::createCurrentPeriod);
+        return periodRepository.findCurrentPeriod().orElseGet(this::createCurrentPeriod);
     }
 
     private Period createCurrentPeriod() {
