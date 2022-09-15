@@ -63,29 +63,20 @@ public class MainController {
         model.addAttribute("income", income.getAmount());
         return "spending";
     }
-/*
+
     @GetMapping(value = "/analysis")
     public String getAnalysis(
-    @RequestParam(value = "yyyymm", required = false) String yyyymm,
-    Model model) {
-        addMonthsToModel(yyyymm, model);
+            @RequestParam(value = "yyyymm", required = false) String yyyymm,
+            Model model) {
 
-        Income income = incomeService.getCurrentIncome();
+        Date month = addMonthsToModel(yyyymm, model);
+        Income income = incomeService.getIncomeForMonth(month);
 
-        model.addAttribute("spending", spendingService.getActualSpendingsForCurrentMonth());
+        model.addAttribute("spending", spendingService.getActualSpendingsForMonth(month));
         model.addAttribute("income", income.getAmount());
         return "analysis";
     }
 
-    @GetMapping(value = "/month")
-    public String dummyMonthSelector(
-            @RequestParam(value = "yyyymm", required = false) String yyyymm,
-            Model model) {
-
-        addMonthsToModel(yyyymm, model);
-        return "month";
-    }
-*/
     //Adds the thisMonth, lastMonth and nextMonth attributes to the model, obtained from yyyymmdd.
     //Returns thisMonth
     private Date addMonthsToModel(String yyyymm, Model model) {
