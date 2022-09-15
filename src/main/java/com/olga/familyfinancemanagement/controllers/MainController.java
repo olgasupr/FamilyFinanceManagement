@@ -21,30 +21,41 @@ public class MainController {
     private final IncomeService incomeService;
 
     @GetMapping
+    String redirectToHome() {
+        return "redirect:/home";
+    }
+
+
+    @GetMapping(value = "/home")
     String getHomePage(
             @RequestParam(value = "yyyymm", required = false) String yyyymm,
             Model model) {
-        addInputMonthToModel(yyyymm, model);
 
-        Income income = incomeService.getCurrentIncome();
+        Date month = addMonthsToModel(yyyymm, model);
+        Income income = incomeService.getIncomeForMonth(month);
 
-        model.addAttribute("spending", spendingService.getActualSpendingsForCurrentMonth());
+        model.addAttribute("spending", spendingService.getActualSpendingsForMonth(month));
         model.addAttribute("income", income.getAmount());
         return "home";
     }
 
     @PostMapping(value = "/income")
-    public String updateIncome(String amount) {
-        double amountAsDouble = Double.parseDouble(amount.replaceAll(",", ""));
-        incomeService.createOrUpdateIncome(amountAsDouble);
-        return "redirect:/";
-    }
+    public String updateIncome(
+            String yyyymm,
+            String amount) {
 
+        Date month = getMonthFromYYYYMM(yyyymm);
+        double amountAsDouble = parseMoneyField(amount);
+
+        incomeService.createOrUpdateIncome(month, amountAsDouble);
+        return "redirect:/home?yyyymm=" + yyyymm;
+    }
+/*
     @GetMapping(value = "/spending")
     public String getSpending(
             @RequestParam(value = "yyyymm", required = false) String yyyymm,
             Model model) {
-        addInputMonthToModel(yyyymm, model);
+        addMonthsToModel(yyyymm, model);
 
         Income income = incomeService.getCurrentIncome();
 
@@ -57,7 +68,7 @@ public class MainController {
     public String getAnalysis(
     @RequestParam(value = "yyyymm", required = false) String yyyymm,
     Model model) {
-        addInputMonthToModel(yyyymm, model);
+        addMonthsToModel(yyyymm, model);
 
         Income income = incomeService.getCurrentIncome();
 
@@ -71,20 +82,31 @@ public class MainController {
             @RequestParam(value = "yyyymm", required = false) String yyyymm,
             Model model) {
 
-        addInputMonthToModel(yyyymm, model);
+        addMonthsToModel(yyyymm, model);
         return "month";
     }
+*/
+    //Adds the thisMonth, lastMonth and nextMonth attributes to the model, obtained from yyyymmdd.
+    //Returns thisMonth
+    private Date addMonthsToModel(String yyyymm, Model model) {
 
-
-    private void addInputMonthToModel(String yyyymm, Model model) {
-
-        Date parsedMonth = DateUtils.parseYYYYMM(yyyymm);
-        Date thisMonth = parsedMonth == null ?
-                DateUtils.getFirstDayOfCurrentMonth() :
-                parsedMonth;
-
+        Date thisMonth = getMonthFromYYYYMM(yyyymm);
         model.addAttribute("thisMonth", thisMonth);
         model.addAttribute("lastMonth", DateUtils.addMonths(thisMonth, -1));
         model.addAttribute("nextMonth", DateUtils.addMonths(thisMonth, 1));
+
+        return thisMonth;
+    }
+
+    private Date getMonthFromYYYYMM(String yyyymm) {
+        Date parsedMonth = DateUtils.parseYYYYMM(yyyymm);
+        Date month = parsedMonth == null ?
+                DateUtils.getFirstDayOfCurrentMonth() :
+                parsedMonth;
+        return month;
+    }
+
+    private double parseMoneyField(String amount) {
+        return Double.parseDouble(amount.replaceAll(",", ""));
     }
 }

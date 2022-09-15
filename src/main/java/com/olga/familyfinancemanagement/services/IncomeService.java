@@ -7,13 +7,15 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
+
 @AllArgsConstructor
 @Service
 public class IncomeService {
 
     private final PeriodService periodService;
     private final IncomeRepository incomeRepository;
-
+/*
     public Income getCurrentIncome() {
         final Period currentPeriod = periodService.getCurrentPeriod();
         return incomeRepository.findByPeriod_Id(currentPeriod.getId())
@@ -23,18 +25,23 @@ public class IncomeService {
     public double getIncomeByPeriodId(final int periodId) {
         return incomeRepository.findByPeriod_Id(periodId).orElse(new Income()).getAmount();
     }
-
+*/
     @Transactional
-    public void createOrUpdateIncome(final double amount) {
+    public void createOrUpdateIncome(final Date month, final double amount) {
 
-        final Period currentPeriod = periodService.getCurrentPeriod();
-        incomeRepository.findByPeriod_Id(currentPeriod.getId())
+        final Period period = periodService.getPeriodForDate(month);
+        incomeRepository.findByPeriod_Id(period.getId())
                 .ifPresentOrElse(
                         (income) -> {
                             incomeRepository.updateIncomeAmount(income.getId(), amount);
                         }, () -> {
-                            incomeRepository.save(new Income(null, amount, currentPeriod));
+                            incomeRepository.save(new Income(null, amount, period));
                         });
     }
 
+    public Income getIncomeForMonth(Date date) {
+        final Period period = periodService.getPeriodForDate(date);
+        return incomeRepository.findByPeriod_Id(period.getId())
+                .orElseGet(() -> incomeRepository.save(new Income(null, 0, period)));
+    }
 }

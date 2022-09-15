@@ -11,14 +11,31 @@ import static java.time.temporal.TemporalAdjusters.lastDayOfMonth;
 
 public class DateUtils {
 
+
     public static Date getFirstDayOfCurrentMonth() {
         return Date.from(now().with(firstDayOfMonth()).atStartOfDay().toInstant(UTC));
     }
 
+    public static Date getFirstDayOfMonth(Date date) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        c.set(Calendar.DAY_OF_MONTH, 1);
+        return c.getTime();
+    }
+/*
     public static Date getLastDayOfCurrentMonth() {
         return Date.from(now().with(lastDayOfMonth()).atStartOfDay().toInstant(UTC));
     }
 
+    public static Date getLastDayOfMonth(Date date) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        c.set(Calendar.DAY_OF_MONTH, 1);
+        c.add(Calendar.MONTH, 1);
+        c.add(Calendar.DAY_OF_MONTH, 1);
+        return c.getTime();
+    }
+*/
     public static Date addMonths(Date date, int months) {
         Calendar c = Calendar.getInstance();
         c.setTime(date);
