@@ -6,14 +6,10 @@ import com.olga.familyfinancemanagement.utils.DateUtils;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneOffset;
-import java.time.temporal.TemporalAdjusters;
 import java.util.Date;
 
-import static com.olga.familyfinancemanagement.utils.DateUtils.getFirstDayOfCurrentMonth;
-import static com.olga.familyfinancemanagement.utils.DateUtils.getLastDayOfCurrentMonth;
+import static com.olga.familyfinancemanagement.utils.DateUtils.addMonths;
+import static com.olga.familyfinancemanagement.utils.DateUtils.getFirstDayOfMonth;
 
 @AllArgsConstructor
 @Service
@@ -23,6 +19,7 @@ public class PeriodService {
 
     public Period getPeriodForDate(Date date) {
         return periodRepository.findPeriodForDate(date).orElseGet(() -> createPeriodForDate(date));
+    }
 
     private Period createPeriodForDate(Date date) {
         Date firstOfMonth = getFirstDayOfMonth(date);

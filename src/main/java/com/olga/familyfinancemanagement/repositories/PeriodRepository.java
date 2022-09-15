@@ -12,10 +12,6 @@ import java.util.Optional;
 @Repository
 public interface PeriodRepository extends CrudRepository<Period, Integer> {
 
-    // This is still not correct
-    @Query(nativeQuery = true, value = "SELECT * FROM period WHERE from_date <= CURDATE() AND to_date >= CURDATE()")
-    Optional<Period> findCurrentPeriod();
-
     //Optional<Income> findByPeriod_Id(final Integer periodId);
 
     @Query(nativeQuery = true, value = "SELECT * FROM period WHERE from_date <= :date AND to_date > :date")
