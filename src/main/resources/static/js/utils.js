@@ -1,7 +1,7 @@
 
 function formatInputAmount(amount) {
     var parts = amount.split('.');
-    let whole = (parseInt(amount) || 0).toLocaleString('en-US');
+    let whole = (parseInt(parts[0]) || 0).toLocaleString('en-US');
     if (parts.length == 1) {
         return whole;
     } else {
