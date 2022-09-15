@@ -22,10 +22,11 @@
             </ul>
 
             <ul class="right hide-on-med-and-down">
-                <li><a href="http://localhost:8080"><b style="font-size: large">Home</b></a></li>
+                <li><a th:href="${'/home?yyyymm='+ #dates.format(thisMonth, 'yyyyMM')}"><b style="font-size: large">Home</b></a></li>
                 <li><a id="editLink" data-target="modal1" class="modal-trigger"><b style="font-size: large">Edit Income</b></a></li>
-                <li><a href="spending"><b style="font-size: large">Edit spending</b></a></li>
-                <li><a href="analysis"><b style="font-size: large">View analysis</b></a></li>
+                <li><a th:href="${'/spending?yyyymm='+ #dates.format(thisMonth, 'yyyyMM')}"><b style="font-size: large">Edit spending</b></a></li>
+                <li><a th:href="${'/analysis?yyyymm='+ #dates.format(thisMonth, 'yyyyMM')}"><b style="font-size: large">View analysis</b></a></li>
+
             </ul>
         </div>
     </nav>
@@ -38,9 +39,9 @@
     <br>
     <div class="row center" style="color: white; font-size: xx-large">
         <div class="col s12">
-            <a th:href="${'/month?yyyymm=' + #dates.format(lastMonth, 'yyyyMM')}"><b style="font-size: large">←</b></a>
+            <a th:href="${'/spending?yyyymm=' + #dates.format(lastMonth, 'yyyyMM')}"><b style="font-size: large">←</b></a>
             <b id="headingMonth" th:text="${#dates.monthName(thisMonth) + ' ' + #dates.year(thisMonth)}"></b>
-            <a th:href="${'/month?yyyymm=' + #dates.format(nextMonth, 'yyyyMM')}"><b style="font-size: large">→</b></a>
+            <a th:href="${'/spending?yyyymm=' + #dates.format(nextMonth, 'yyyyMM')}"><b style="font-size: large">→</b></a>
         </div>
     </div>
 
@@ -66,6 +67,7 @@
                             <div class="input-wrap">
                                 <div class="input-field col s6">
                                     <input id="Income" name="amount" type="text" pattern="^[\d,]+\.?\d?\d?$" class="validate">
+                                    <input type="hidden" name="yyyymm" th:value="${#dates.format(thisMonth, 'yyyyMM')}">
                                 </div>
                             </div>
                         </form>
@@ -138,30 +140,26 @@
             </div>
             <!--Modal ADD SPENDING end-->
 
-                <p></p>
-                <table class="responsive-table">
-                    <thead>
-                    <tr>
-                        <th style="width: 30%">Category</th>
-                        <th style="width: 30%">Amount</th>
-                        <th style="width: 30%">Date</th>
-                        <th style="width: 10%">Action</th>
-                    </tr>
-                    </thead>
+            <p></p>
+            <table class="responsive-table">
+                <thead>
+                <tr>
+                    <th style="width: 30%">Category</th>
+                    <th style="width: 30%">Amount</th>
+                    <th style="width: 30%">Date</th>
+                    <th style="width: 10%">Action</th>
+                </tr>
+                </thead>
 
-                    <tbody>
-                    <tr th:each="spendingItem: ${spending}">
-                        <td th:text="${spendingItem.spendingCategory.categoryName}" th:title="${spendingItem.spendingCategory.description}"></td>
-                        <td th:text="${spendingItem.amount}"></td>
-                        <td th:text="${#dates.format(spendingItem.spendingDate, 'dd-MM-yyyy')}"></td>
-                    </tr>
-                    </tbody>
-                </table>
-
-            </div>
-
+                <tbody>
+                <tr th:each="spendingItem: ${spending}">
+                    <td th:text="${spendingItem.spendingCategory.categoryName}" th:title="${spendingItem.spendingCategory.description}"></td>
+                    <td th:text="${spendingItem.amount}"></td>
+                    <td th:text="${#dates.format(spendingItem.spendingDate, 'dd-MM-yyyy')}"></td>
+                </tr>
+                </tbody>
+            </table>
         </div>
-
     </div>
 </main>
 

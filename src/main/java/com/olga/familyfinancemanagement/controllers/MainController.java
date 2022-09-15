@@ -50,20 +50,20 @@ public class MainController {
         incomeService.createOrUpdateIncome(month, amountAsDouble);
         return "redirect:/home?yyyymm=" + yyyymm;
     }
-/*
+
     @GetMapping(value = "/spending")
     public String getSpending(
             @RequestParam(value = "yyyymm", required = false) String yyyymm,
             Model model) {
-        addMonthsToModel(yyyymm, model);
 
-        Income income = incomeService.getCurrentIncome();
+        Date month = addMonthsToModel(yyyymm, model);
+        Income income = incomeService.getIncomeForMonth(month);
 
-        model.addAttribute("spending", spendingService.getActualSpendingsForCurrentMonth());
+        model.addAttribute("spending", spendingService.getActualSpendingsForMonth(month));
         model.addAttribute("income", income.getAmount());
         return "spending";
     }
-
+/*
     @GetMapping(value = "/analysis")
     public String getAnalysis(
     @RequestParam(value = "yyyymm", required = false) String yyyymm,
