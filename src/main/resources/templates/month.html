@@ -12,9 +12,14 @@
 
 <body>
 
-<h1 th:text="${#dates.monthName(thisMonth) + ' ' + #dates.year(thisMonth)}"></h1>
-<a th:href="${'/month?yyyymm=' + #dates.format(lastMonth, 'yyyyMM')}">Last Month</a>
-<a th:href="${'/month?yyyymm=' + #dates.format(nextMonth, 'yyyyMM')}">Next Month</a>
+<!-- Upper row -->
+<div class="row center" style="color: white">
+    <div class="col s12" style="padding-bottom: 30px">
+        <a th:href="${'/month?yyyymm=' + #dates.format(lastMonth, 'yyyyMM')}"><b style="font-size: large">Last Month</b></a>
+        <b id="heading" th:text="${#dates.monthName(thisMonth) + ' ' + #dates.year(thisMonth)}"></b>
+        <a th:href="${'/month?yyyymm=' + #dates.format(nextMonth, 'yyyyMM')}"><b style="font-size: large">Next Month</b></a>
+    </div>
+</div>
 
 <!-- Initialization -->
 <script type="text/javascript" src="../js/materialize.min.js"></script>
