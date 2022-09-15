@@ -15,17 +15,7 @@ public class IncomeService {
 
     private final PeriodService periodService;
     private final IncomeRepository incomeRepository;
-/*
-    public Income getCurrentIncome() {
-        final Period currentPeriod = periodService.getCurrentPeriod();
-        return incomeRepository.findByPeriod_Id(currentPeriod.getId())
-                .orElseGet(() -> incomeRepository.save(new Income(null, 0, currentPeriod)));
-    }
 
-    public double getIncomeByPeriodId(final int periodId) {
-        return incomeRepository.findByPeriod_Id(periodId).orElse(new Income()).getAmount();
-    }
-*/
     @Transactional
     public void createOrUpdateIncome(final Date month, final double amount) {
 

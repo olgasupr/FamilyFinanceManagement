@@ -24,12 +24,4 @@ public class SpendingService {
         return actualSpendingRepository.findBySpendingDateGreaterThanEqualAndSpendingDateLessThan(
                 thisMonth, nextMonth);
     }
-
-    /*
-    public List<ActualSpending> getActualSpendingsForCurrentMonth() {
-        return actualSpendingRepository
-                .findBySpendingDateGreaterThanEqualAndSpendingDateLessThanEqual(getFirstDayOfCurrentMonth(), getLastDayOfCurrentMonth());
-    }
- */
-
 }
