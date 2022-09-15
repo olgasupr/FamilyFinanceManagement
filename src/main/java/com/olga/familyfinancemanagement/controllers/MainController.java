@@ -13,9 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Date;
 
-import static java.time.ZoneOffset.UTC;
-import static java.time.temporal.TemporalAdjusters.firstDayOfMonth;
-
 @AllArgsConstructor
 @Controller
 public class MainController {
@@ -65,6 +62,13 @@ public class MainController {
             @RequestParam(value = "yyyymm", required = false) String yyyymm,
             Model model) {
 
+        addInputMonthToModel(yyyymm, model);
+        return "month";
+    }
+
+
+    private void addInputMonthToModel(String yyyymm, Model model) {
+
         Date parsedMonth = DateUtils.parseYYYYMM(yyyymm);
         Date thisMonth = parsedMonth == null ?
                 DateUtils.getFirstDayOfCurrentMonth() :
@@ -73,7 +77,5 @@ public class MainController {
         model.addAttribute("thisMonth", thisMonth);
         model.addAttribute("lastMonth", DateUtils.addMonths(thisMonth, -1));
         model.addAttribute("nextMonth", DateUtils.addMonths(thisMonth, 1));
-
-        return "month";
     }
 }
