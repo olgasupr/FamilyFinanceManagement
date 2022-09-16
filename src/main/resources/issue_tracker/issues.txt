@@ -17,7 +17,9 @@ Visual issues:
 	9.  home page:  only return the last 15(?) rows for spending (?)
 	10.  spending page:  table has fonts that are too small
 	11.  FIXED	home page - format analysis as percentages, round off actuals and maybe targets
-	12.  spending page:  delete button looks like crap
+	12.  FIXED 	spending page:  delete button looks like crap
+	13.  spending page:  format amount using commas, e.g. 1,234.56
+	14.  analysis page:  format amount using commas, e.g. 1,234.56
 
 	
 Other issues:
@@ -30,7 +32,7 @@ Other issues:
 			how can we perform analysis with this?
 	6.  FIXED 	spending page:  modal:  when incomplete info supplied, and click submit, error occurs.
 	7.  FIXED	home page:  modal:  when nothing typed into input, error occurs.
-	8.	Previous month target spending table shows NaN
+	8.	FIXED 	Previous month target spending table shows NaN
 	
 	
 To implement generally
