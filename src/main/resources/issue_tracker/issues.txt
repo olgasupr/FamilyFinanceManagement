@@ -17,6 +17,7 @@ Visual issues:
 	9.  home page:  only return the last 15(?) rows for spending (?)
 	10.  spending page:  table has fonts that are too small
 	11.  FIXED	home page - format analysis as percentages, round off actuals and maybe targets
+	12.  spending page:  delete button looks like crap
 
 	
 Other issues:
@@ -46,11 +47,20 @@ To implement generally
 	5.  DONE	spending page:  Populate dropdown using SpendingService.getAllSpendingCategories()
 	6.  DONE	AnalysisService and Analysis
 	7.  home page:  populate evaluation for analysis
+	8.  DONE 	spendidng page:  implement delete spending for each row
+	9.  spending page:  implement update button for each row
 
 
 
 ========================================================================================
 
 
+            <form method="post" action="deleteActualSpending">
+				<input type="hidden" name="yyyymm" th:value="${#dates.format(thisMonth, 'yyyyMM')}" required>
+				<input type="hidden" name="actualSpendingId" th:value="${spendingItem.id}" required>
 
+				<button class="modal-close light-blue darken-4 btn-large" type="submit" name="action" style="color:white; font-size: x-large; font-family: 'Times New Roman'">
+					Delete<i class="material-icons right">send</i>
+				</button>
+            </form>
 

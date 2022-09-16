@@ -151,6 +151,16 @@
                     <td th:text="${spendingItem.spendingCategory.categoryName}" th:title="${spendingItem.spendingCategory.description}"></td>
                     <td th:text="${spendingItem.amount}"></td>
                     <td th:text="${#dates.format(spendingItem.spendingDate, 'dd-MM-yyyy')}"></td>
+                    <td>  <!-- delete button -->
+                        <form method="post" action="deleteSpending">
+                            <input type="hidden" name="yyyymm" th:value="${#dates.format(thisMonth, 'yyyyMM')}" required>
+                            <input type="hidden" name="actualSpendingId" th:value="${spendingItem.id}" required>
+
+                            <button class="modal-close light-blue darken-4 btn-large" type="submit" name="action" style="color:white; font-size: x-large; font-family: 'Times New Roman'">
+                                Delete<i class="material-icons right">send</i>
+                            </button>
+                        </form>
+                    </td>
                 </tr>
                 </tbody>
             </table>

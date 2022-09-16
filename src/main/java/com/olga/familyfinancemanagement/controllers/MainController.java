@@ -83,6 +83,18 @@ public class MainController {
         return "redirect:/spending?yyyymm=" + yyyymm;
     }
 
+    @PostMapping(value = "/deleteSpending")
+    public String deleteSpending(
+            String yyyymm,
+            int actualSpendingId,
+            Date date) {
+
+        System.out.println("In /deleteSpending, yyyymm = " + yyyymm + ", actualSpendingId = " + actualSpendingId);
+        spendingService.deleteActualSpending(actualSpendingId);
+        return "redirect:/spending?yyyymm=" + yyyymm;
+    }
+
+
     @GetMapping(value = "/analysis")
     public String getAnalysis(
             @RequestParam(value = "yyyymm", required = false) String yyyymm,
