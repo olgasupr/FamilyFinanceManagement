@@ -28,7 +28,7 @@ Other issues:
 	
 	
 To implement generally
-	1.  Populate the target percentages to database
+	1.  DONE	Populate the target percentages to database
 	2.  home page:  populate analysis table
 	3.  Analysis page:
 		- SpendingCategory (categoryName, а description когда hover)
@@ -38,9 +38,9 @@ To implement generally
 		- ActualAmount = (из таблицы actual_spending)
 		- Excess % = Actual % - Target %
 		- ExcessAmount = ActualAmount - TargetAmount
-	4.  ASKED OLGA L:	Implement SpendingService.getAllSpendingCategories(), SpendingService.getAllTargetSpending(), SpendingService.getSavingsSpendingCategory()
-	5.  DONE:	spending page:  Populate dropdown using SpendingService.getAllSpendingCategories()
-	6.  DONE:	AnalysisService and Analysis
+	4.  ASKED OLGA L	Implement SpendingService.getAllSpendingCategories(), SpendingService.getAllTargetSpending(), SpendingService.getSavingsSpendingCategory()
+	5.  DONE	spending page:  Populate dropdown using SpendingService.getAllSpendingCategories()
+	6.  DONE	AnalysisService and Analysis
 
 
 
