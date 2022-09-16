@@ -30,6 +30,10 @@ public class SpendingService {
     }
 
     public List<SpendingCategory> getAllSpendingCategories() {
+
+        //TODO:  read from database
+
+        //these are just some dummy values
         return Arrays.asList(
                 new SpendingCategory(1, "category1", "description1"),
                 new SpendingCategory(2, "category2", "description2"),
