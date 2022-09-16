@@ -51,7 +51,7 @@ th {
     font-family: "Times New Roman";
     font-size: xx-large;
     text-decoration: underline;
-    text-align: center;
+    text-align: left;
 }
 
 #amountSpent {
@@ -64,6 +64,11 @@ th {
 .input-field {
     width: 250px;
     margin-left: 107px;
+}
+
+td {
+    font-size: xx-large;
+    text-align: left;
 }
 
 

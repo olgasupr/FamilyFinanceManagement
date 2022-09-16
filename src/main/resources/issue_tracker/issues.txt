@@ -30,6 +30,7 @@ Other issues:
 			how can we perform analysis with this?
 	6.  FIXED 	spending page:  modal:  when incomplete info supplied, and click submit, error occurs.
 	7.  FIXED	home page:  modal:  when nothing typed into input, error occurs.
+	8.	Previous month target spending table shows NaN
 	
 	
 To implement generally

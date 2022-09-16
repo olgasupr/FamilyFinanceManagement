@@ -140,9 +140,9 @@
                 <thead>
                 <tr>
                     <th style="width: 30%">Category</th>
-                    <th style="width: 30%">Amount</th>
-                    <th style="width: 30%">Date</th>
-                    <th style="width: 10%">Action</th>
+                    <th style="width: 30%">Amount in €</th>
+                    <th style="width: 25%">Date</th>
+                    <th style="width: 15%">Action</th>
                 </tr>
                 </thead>
 
@@ -156,7 +156,7 @@
                             <input type="hidden" name="yyyymm" th:value="${#dates.format(thisMonth, 'yyyyMM')}" required>
                             <input type="hidden" name="actualSpendingId" th:value="${spendingItem.id}" required>
 
-                            <button class="modal-close light-blue darken-4 btn-large" type="submit" name="action" style="color:white; font-size: x-large; font-family: 'Times New Roman'">
+                            <button class="modal-close light-blue darken-4 btn-small" type="submit" name="action" style="color:white; font-size: x-large; font-family: 'Times New Roman'; margin-bottom: 7px">
                                 Delete<i class="material-icons right">send</i>
                             </button>
                         </form>

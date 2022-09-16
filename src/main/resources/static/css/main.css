@@ -4,6 +4,10 @@ body {
     background-size: cover;
 }
 
+th {
+    text-decoration: underline;
+}
+
 div {
     font-family: "Times New Roman";
 }

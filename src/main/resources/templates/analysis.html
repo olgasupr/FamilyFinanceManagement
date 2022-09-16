@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" th:href="@{/css/materialize.min.css}" media="screen,projection" />
     <link type="text/css" rel="stylesheet" th:href="@{/css/main.css}" media="screen, projection" />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/analysis.css}" media="screen, projection" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
@@ -25,20 +26,22 @@
                 <li><a id="editLink" data-target="modal1" class="modal-trigger"><b style="font-size: large">Edit Income</b></a></li>
                 <li><a th:href="${'/spending?yyyymm='+ #dates.format(thisMonth, 'yyyyMM')}"><b style="font-size: large">Edit spending</b></a></li>
                 <li><a th:href="${'/analysis?yyyymm='+ #dates.format(thisMonth, 'yyyyMM')}"><b style="font-size: large">View analysis</b></a></li>
+
             </ul>
         </div>
     </nav>
 </div>
 <!-- navbar end -->
 
+
 <main>
     <!-- Upper row -->
     <br>
     <div class="row center" style="color: white; font-size: xx-large">
         <div class="col s12">
-            <a th:href="${'/analysis?yyyymm=' + #dates.format(lastMonth, 'yyyyMM')}"><b style="font-size: large">←</b></a>
+            <a th:href="${'/spending?yyyymm=' + #dates.format(lastMonth, 'yyyyMM')}"><b style="font-size: large">←</b></a>
             <b id="headingMonth" th:text="${#dates.monthName(thisMonth) + ' ' + #dates.year(thisMonth)}"></b>
-            <a th:href="${'/analysis?yyyymm=' + #dates.format(nextMonth, 'yyyyMM')}"><b style="font-size: large">→</b></a>
+            <a th:href="${'/spending?yyyymm=' + #dates.format(nextMonth, 'yyyyMM')}"><b style="font-size: large">→</b></a>
         </div>
     </div>
 
@@ -50,39 +53,72 @@
             <!--Modal EDIT INCOME trigger-->
             <button id="editButton" data-target="modal1" class="btn modal-trigger"><b>EDIT</b></button>
         </div>
-    </div>
 
-    <!-- Modal EDIT INCOME body -->
-    <div id="modal1" class="modal">
+        <!-- Modal EDIT INCOME body -->
+        <div id="modal1" class="modal">
 
-        <form method="post" action="income">
-            <div class="modal-content">
-                <h4 style="margin-left: 30px">Please enter your family's income per month: </h4>
-                <p></p>
-                <p></p>
-                <div class="row">
-                    <div class="input-wrap">
-                        <div class="input-field col s6">
-                            <input id="Income" name="amount" type="text" pattern="^[\d,]+\.?\d?\d?$" class="validate" required>
-                            <input type="hidden" name="yyyymm" th:value="${#dates.format(thisMonth, 'yyyyMM')}" required>
+            <form method="post" action="income">
+                <div class="modal-content">
+                    <h4 style="margin-left: 30px">Please enter your family's income per month: </h4>
+                    <p></p>
+                    <p></p>
+                    <div class="row">
+                        <div class="input-wrap">
+                            <div class="input-field col s6">
+                                <input id="Income" name="amount" type="text" pattern="^[\d,]+\.?\d?\d?$" class="validate" required>
+                                <input type="hidden" name="yyyymm" th:value="${#dates.format(thisMonth, 'yyyyMM')}" required>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="modal-footer" style="background-color:#01579b">
-                    <button class="modal-close light-blue darken-4 btn-large" type="submit" name="action" style="color:white; font-size: x-large; font-family: 'Times New Roman'">
-                        Submit<i class="material-icons right">send</i>
-                    </button>
+                    <div class="modal-footer" style="background-color:#01579b">
+                        <button class="modal-close light-blue darken-4 btn-large" type="submit" name="action" style="color:white; font-size: x-large; font-family: 'Times New Roman'">
+                            Submit<i class="material-icons right">send</i>
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
+        <!-- Modal EDIT INCOME end -->
     </div>
-    <!-- Modal EDIT INCOME end -->
+
+    <h4>Current month's analysis</h4>
+    <div class="col s12" id="tableAnalysis">
+    <p></p>
+    <table class="responsive-table" style="margin-left: 50px; width: 90%">
+        <thead>
+        <tr>
+            <th style="width: 17%">Category</th>
+            <th style="width: 17%">Target %</th>
+            <th style="width: 19%">Target €</th>
+            <th style="width: 17%;">Your %</th>
+            <th style="width: 19%;">Your €</th>
+            <th style="width: 10%">Evaluation</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="analysis: ${analyses}">
+            <td th:text="${analysis.spendingCategoryName}" th:title="${analysis.spendingCategoryDescription}"></td>
+            <td th:text="${#numbers.formatPercent(analysis.targetSpendingPercent, 1, 0)}"></td>
+            <td th:text="${analysis.targetSpendingAmount}"></td>
+            <td th:text="${#numbers.formatPercent(analysis.actualSpendingPercent, 1, 0)}"></td>
+            <td th:text="${analysis.actualSpendingAmount}"></td>
+        </tr>
+
+        </tbody>
+    </table>
+
+    </div>
+
+
+
 
 </main>
 
 <!-- Initialization -->
 <script type="text/javascript" src="../js/materialize.min.js"></script>
+<!--calling method from js file-->
 <script type="text/javascript" src="../js/utils.js"></script>
 <script>
     /* nav bar initialization */
@@ -102,7 +138,14 @@
     document.getElementById('Income').addEventListener('input', event =>
         event.target.value = formatInputAmount(event.target.value.replace(/[^\d\.]+/gi, ''))
     );
-</script>
 
+    /* amount spent editing -> comma separation enabling */
+    document.getElementById('amountSpent').addEventListener('input', event =>
+        event.target.value = formatInputAmount(event.target.value.replace(/[^\d\.]+/gi, ''))
+    );
+
+
+</script>
 </body>
+
 </html>
