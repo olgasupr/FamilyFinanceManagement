@@ -16,7 +16,7 @@ Visual issues:
 	8.  home page:  sort the spending by date (?)
 	9.  home page:  only return the last 15(?) rows for spending (?)
 	10.  spending page:  table has fonts that are too small
-	11.  home page - format analysis as percentages, round off actuals and maybe targets
+	11.  FIXED	home page - format analysis as percentages, round off actuals and maybe targets
 
 	
 Other issues:
