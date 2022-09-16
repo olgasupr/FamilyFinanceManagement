@@ -55,12 +55,3 @@ To implement generally
 ========================================================================================
 
 
-            <form method="post" action="deleteActualSpending">
-				<input type="hidden" name="yyyymm" th:value="${#dates.format(thisMonth, 'yyyyMM')}" required>
-				<input type="hidden" name="actualSpendingId" th:value="${spendingItem.id}" required>
-
-				<button class="modal-close light-blue darken-4 btn-large" type="submit" name="action" style="color:white; font-size: x-large; font-family: 'Times New Roman'">
-					Delete<i class="material-icons right">send</i>
-				</button>
-            </form>
-
