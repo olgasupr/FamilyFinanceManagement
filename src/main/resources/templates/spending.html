@@ -95,17 +95,12 @@
                     <div class="modal-content">
                         <h5>Add spending category: </h5>
                         <div class="input-field" id="categoriesSelector">
-                            <select class="browser-default">
+                            <select class="form-control">
                                 <option value="" disabled selected>Choose a category</option>
-                                <option value="1">Food</option>
-                                <option value="2">Personal</option>
-                                <option value="3">Transportation</option>
-                                <option value="4">Housing</option>
-                                <option value="5">Utilities</option>
-                                <option value="6">Savings</option>
-                                <option value="7">Insurance</option>
-                                <option value="8">Recreation</option>
-                                <option value="9">Giving</option>
+                                <option th:each="spendingCategory : ${spendingCategories}"
+                                        th:value="${spendingCategory.id}"
+                                        th:text="${spendingCategory.categoryName}">
+                                </option>
                             </select>
                         </div>
                         <br>

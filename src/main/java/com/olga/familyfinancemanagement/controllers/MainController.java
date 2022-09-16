@@ -61,6 +61,8 @@ public class MainController {
 
         model.addAttribute("spending", spendingService.getActualSpendingsForMonth(month));
         model.addAttribute("income", income.getAmount());
+        model.addAttribute("spendingCategories", spendingService.getAllSpendingCategories());
+
         return "spending";
     }
 
