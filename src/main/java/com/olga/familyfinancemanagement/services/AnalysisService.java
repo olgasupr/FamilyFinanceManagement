@@ -17,12 +17,12 @@ public class AnalysisService {
     private final IncomeService incomeService;
     private final SpendingService spendingService;
 
-    public List<Analysis> getAnalysisForMonth(Date month) {
+    public List<Analysis> getAnalysesForMonth(Date month) {
 
         final Period period = periodService.getPeriodForDate(month);
         final Income income = incomeService.getIncomeForMonth(month);
         final List<SpendingCategory> spendingCategories = spendingService.getAllSpendingCategories();
-        SpendingCategory savingsCategory = spendingService.getSavingsSpendingCategory();
+        final SpendingCategory savingsCategory = spendingService.getSavingsSpendingCategory();
         final List<TargetSpending> targetSpendings = spendingService.getAllTargetSpending();
         final List<ActualSpending> actualSpendings = spendingService.getActualSpendingsForMonth(month);
 
