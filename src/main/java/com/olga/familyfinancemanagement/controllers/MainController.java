@@ -73,12 +73,6 @@ public class MainController {
             int categoryId,
             Date date) {
 
-        System.out.println("yyyymm = " + yyyymm);
-        System.out.println("amount = " + amount);
-        System.out.println("categoryId = " + categoryId);
-        System.out.println("date = " + date);
-
-
         double amountAsDouble = parseMoneyField(amount);
 
         spendingService.addSpending(date, amountAsDouble, categoryId);
