@@ -8,6 +8,8 @@ import com.olga.familyfinancemanagement.repositories.TargetSpendingRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -28,7 +30,11 @@ public class SpendingService {
     }
 
     public List<SpendingCategory> getAllSpendingCategories() {
-        return null;  //TODO
+        return Arrays.asList(
+                new SpendingCategory(1, "category1", "description1"),
+                new SpendingCategory(2, "category2", "description2"),
+                new SpendingCategory(100, "category100", "description100")
+        );
     }
 
     public List<TargetSpending> getAllTargetSpending() {
