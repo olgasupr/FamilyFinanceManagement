@@ -75,7 +75,7 @@ public class MainController {
 
         double amountAsDouble = parseMoneyField(amount);
 
-        spendingService.addSpending(date, amountAsDouble, categoryId);
+        spendingService.addActualSpending(amountAsDouble, date, categoryId);
 
         return "redirect:/spending?yyyymm=" + yyyymm;
     }
