@@ -92,48 +92,48 @@
 
                 <!-- Modal ADD SPENDING Structure -->
                 <div id="modal2" class="modal">
-                    <div class="modal-content">
-                        <h5>Add spending category: </h5>
-                        <div class="input-field" id="categoriesSelector">
-                            <select class="form-control">
-                                <option value="" disabled selected>Choose a category</option>
-                                <option th:each="spendingCategory : ${spendingCategories}"
-                                        th:value="${spendingCategory.id}"
-                                        th:text="${spendingCategory.categoryName}">
-                                </option>
-                            </select>
-                        </div>
-                        <br>
-                        <div>
-                        <h5>Add amount:</h5>
-                        <div class="row">
-                            <form class="col s12">
+                    <form>
+                        <div class="modal-content">
+                            <h5>Add spending category: </h5>
+                            <div class="input-field" id="categoriesSelector">
+                                <select class="form-control">
+                                    <option value="" disabled selected>Choose a category</option>
+                                    <option th:each="spendingCategory : ${spendingCategories}"
+                                            th:value="${spendingCategory.id}"
+                                            th:text="${spendingCategory.categoryName}">
+                                    </option>
+                                </select>
+                            </div>
+                            <br>
+                            <h5>Add amount:</h5>
+                            <div>
                                 <div class="row">
-                                    <div class="input-field">
-                                        <input id="amountSpent" type="text" class="validate">
-                                    </div>
+                                    <form class="col s12">
+                                        <div class="row">
+                                            <div class="input-field">
+                                                <input id="amountSpent" type="text" class="validate">
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
-                            </form>
-                        </div>
-                        </div>
-
-                        <div>
-                        <h5>Add date:</h5>
+                            </div>
+                            <br>
+                            <h5>Add date:</h5>
                             <div id="datePicker">
                                 <input type="text" class="datepicker">
                             </div>
                         </div>
 
                         <!--Modal ADD SPENDING footer-->
-                    </div>
-                    <div class="modal-footer" style="background-color: #01579b">
-                        <button id="submitAddSpendingModalButton" class="modal-close light-blue darken-4 btn-large" type="submit" name="action">
-                            Submit<i class="material-icons right">send</i>
-                        </button>
-                    </div>
+                        <div class="modal-footer" style="background-color: #01579b">
+                            <button id="submitAddSpendingModalButton" class="modal-close light-blue darken-4 btn-large" type="submit" name="action">
+                                Submit<i class="material-icons right">send</i>
+                            </button>
+                        </div>
+                    </form>
                 </div>
+                <!--Modal ADD SPENDING end-->
             </div>
-            <!--Modal ADD SPENDING end-->
 
             <p></p>
             <table class="responsive-table">
