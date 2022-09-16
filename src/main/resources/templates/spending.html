@@ -86,10 +86,10 @@
                 <b style="text-decoration: underline; margin-right: 10px">Your family's recent spending </b>
 
                 <!-- Modal ADD SPENDING Trigger -->
-                <button id="addSpendingButton" data-target="modal2" class="btn modal-trigger">ADD SPENDING</button>
+                <button id="addSpendingButton" data-target="modalAddSpending" class="btn modal-trigger">ADD SPENDING</button>
 
                 <!-- Modal ADD SPENDING Structure -->
-                <div id="modal2" class="modal">
+                <div id="modalAddSpending" class="modal">
                     <form method="post" action="postSpending">
                         <div class="modal-content">
                             <input type="hidden" name="yyyymm" th:value="${#dates.format(thisMonth, 'yyyyMM')}">
