@@ -63,8 +63,8 @@
           <div class="row">
             <div class="input-wrap">
               <div class="input-field col s6">
-                <input id="Income" name="amount" type="text" pattern="^[\d,]+\.?\d?\d?$" class="validate">
-                <input type="hidden" name="yyyymm" th:value="${#dates.format(thisMonth, 'yyyyMM')}">
+                <input id="Income" name="amount" type="text" pattern="^[\d,]+\.?\d?\d?$" class="validate" required>
+                <input type="hidden" name="yyyymm" th:value="${#dates.format(thisMonth, 'yyyyMM')}" required>
               </div>
             </div>
           </div>

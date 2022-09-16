@@ -65,8 +65,8 @@
                     <div class="row">
                         <div class="input-wrap">
                             <div class="input-field col s6">
-                                <input id="Income" name="amount" type="text" pattern="^[\d,]+\.?\d?\d?$" class="validate">
-                                <input type="hidden" name="yyyymm" th:value="${#dates.format(thisMonth, 'yyyyMM')}">
+                                <input id="Income" name="amount" type="text" pattern="^[\d,]+\.?\d?\d?$" class="validate" required>
+                                <input type="hidden" name="yyyymm" th:value="${#dates.format(thisMonth, 'yyyyMM')}" required>
                             </div>
                         </div>
                     </div>
@@ -92,10 +92,10 @@
                 <div id="modalAddSpending" class="modal">
                     <form method="post" action="postSpending">
                         <div class="modal-content">
-                            <input type="hidden" name="yyyymm" th:value="${#dates.format(thisMonth, 'yyyyMM')}">
+                            <input type="hidden" name="yyyymm" th:value="${#dates.format(thisMonth, 'yyyyMM')}" required>
                             <h5>Add spending category: </h5>
                             <div class="input-field" id="categoriesSelector">
-                                <select class="form-control browser-default" name="categoryId">
+                                <select class="form-control browser-default" name="categoryId" required>
                                     <option value="" disabled selected>Choose a category</option>
                                     <option th:each="spendingCategory : ${spendingCategories}"
                                             th:value="${spendingCategory.id}"
@@ -109,7 +109,7 @@
                                 <div class="row">
                                     <div class="row">
                                         <div class="input-field">
-                                            <input id="amountSpent" name="amount" type="text" class="validate">
+                                            <input id="amountSpent" name="amount" type="text" class="validate" required>
                                         </div>
                                     </div>
                                 </div>
@@ -117,7 +117,7 @@
 
                             <h5>Add date:</h5>
                             <div id="datePicker">
-                                <input name="date" type="text" class="datepicker">
+                                <input name="date" type="text" class="datepicker" required>
                             </div>
                         </div>
 
