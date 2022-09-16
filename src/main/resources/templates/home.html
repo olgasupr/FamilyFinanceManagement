@@ -98,14 +98,6 @@
             <td th:text="${spendingItem.amount}"></td>
             <td th:text="${#dates.format(spendingItem.spendingDate, 'dd-MM-yyyy')}"></td>
           </tr>
-          </tbody>
-        </table>
-
-        <table style="margin-left: 50px; width: 90%">
-          <tbody>
-          <tr>
-            <td>Last spending was on ... </td>
-          </tr>
           <tr>
             <td><a th:href="${'/spending?yyyymm='+ #dates.format(thisMonth, 'yyyyMM')}"><button>ADD MORE</button></a></td>
           </tr>

@@ -13,6 +13,8 @@ Visual issues:
 	5.  spending page:  modal:  make the modal not have scrollbar
 	6.  FIXED	spending page:  modal:  make the style of dropdown better
 	7.  FIXED	spending page:  modal:  number-format the amount box
+	8.  home page:  sort the spending by date (?)
+	9.  home page:  only return the last 15(?) rows for spending (?)
 
 	
 Other issues:
