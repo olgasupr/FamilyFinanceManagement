@@ -44,6 +44,16 @@ public class SpendingService {
         actualSpendingRepository.save(new ActualSpending(null, amount, date, getSpendingCategory(categoryId)));
     }
 
+    public void updateActualSpending(final int id, final double amount, final Date date, final int categoryId) {
+        //TODO:  implement
+        //Note:  the id will always be valid, as we're going to update an existing record.
+    }
+
+    public void deleteActualSpending(final int id) {
+        //TODO:  implement
+        //Note:  the id will always be valid, as we're going to delete an existing record.
+    }
+
     private SpendingCategory getSpendingCategory(final int categoryId) {
         return spendingCategoryRepository.findById(categoryId).orElse(null);
     }
