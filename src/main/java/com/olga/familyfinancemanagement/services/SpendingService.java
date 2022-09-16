@@ -1,6 +1,8 @@
 package com.olga.familyfinancemanagement.services;
 
 import com.olga.familyfinancemanagement.models.ActualSpending;
+import com.olga.familyfinancemanagement.models.SpendingCategory;
+import com.olga.familyfinancemanagement.models.TargetSpending;
 import com.olga.familyfinancemanagement.repositories.ActualSpendingRepository;
 import com.olga.familyfinancemanagement.repositories.TargetSpendingRepository;
 import lombok.AllArgsConstructor;
@@ -23,5 +25,17 @@ public class SpendingService {
         Date nextMonth = addMonths(thisMonth, 1);
         return actualSpendingRepository.findBySpendingDateGreaterThanEqualAndSpendingDateLessThan(
                 thisMonth, nextMonth);
+    }
+
+    public List<SpendingCategory> getAllSpendingCategories() {
+        return null;  //TODO
+    }
+
+    public List<TargetSpending> getAllTargetSpending() {
+        return null;  //TODO
+    }
+
+    public SpendingCategory getSavingsSpendingCategory() {
+        return null;  //TODO
     }
 }
