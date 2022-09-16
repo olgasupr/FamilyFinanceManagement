@@ -33,12 +33,17 @@ public class SpendingService {
 
         //TODO:  read from database
 
-        //these are just some dummy values
         return Arrays.asList(
-                new SpendingCategory(1, "category1", "description1"),
-                new SpendingCategory(2, "category2", "description2"),
-                new SpendingCategory(100, "category100", "description100")
-        );
+                new SpendingCategory(64, "Food", "Groceries, restaurants, cafes, etc."),
+                new SpendingCategory(65, "Personal", "Clothing, hobbies, self-care, home decor, etc."),
+                new SpendingCategory(66, "Transportation", "Public transport, car payments, fuel, maintenance, etc."),
+                new SpendingCategory(67, "Housing", "Mortgage, rent, fees, taxes, etc."),
+                new SpendingCategory(68, "Utilities", "Gas, electric, water, internet, cell phone, etc."),
+                new SpendingCategory(69, "Savings", "Retirement savings, pension funds, emergency fund, etc."),
+                new SpendingCategory(70, "Insurance", "Health, house, auto, life, etc."),
+                new SpendingCategory(71, "Recreation", "Travel, entertainment, lifestyle expenses, etc."),
+                new SpendingCategory(72, "Giving", "Donation, etc.")
+                );
     }
 
     public List<TargetSpending> getAllTargetSpending() {

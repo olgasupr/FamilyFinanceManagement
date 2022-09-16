@@ -95,7 +95,7 @@
                             <input type="hidden" name="yyyymm" th:value="${#dates.format(thisMonth, 'yyyyMM')}">
                             <h5>Add spending category: </h5>
                             <div class="input-field" id="categoriesSelector">
-                                <select class="form-control" name="categoryId">
+                                <select class="form-control browser-default" name="categoryId">
                                     <option value="" disabled selected>Choose a category</option>
                                     <option th:each="spendingCategory : ${spendingCategories}"
                                             th:value="${spendingCategory.id}"
@@ -114,7 +114,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <br>
+
                             <h5>Add date:</h5>
                             <div id="datePicker">
                                 <input name="date" type="text" class="datepicker">

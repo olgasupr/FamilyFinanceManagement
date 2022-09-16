@@ -29,12 +29,13 @@
     text-align: left;
     margin-left: 100px;
     font-family: "Times New Roman";
-    color: white;
 }
 
 #categoriesSelector{
     margin-left: 100px;
     width: 250px;
+    color: white;
+    font-size: large;
 }
 
 #datePicker {
@@ -57,6 +58,7 @@ th {
     color: white;
     font-size: x-large;
     font-family: "Times New Roman";
+    margin-left: 20px;
 }
 
 .input-field {
