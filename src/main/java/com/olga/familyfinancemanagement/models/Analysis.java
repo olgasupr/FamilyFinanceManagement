@@ -35,7 +35,11 @@ public class Analysis {
     }
 
     public double getActualSpendingPercent() {
-        return getActualSpendingAmount() / getIncomeAmount();
+        double incomeAmount = getIncomeAmount();
+        if (incomeAmount < 0.01) {
+            return 0.0;
+        }
+        return getActualSpendingAmount() / incomeAmount;
     }
 
     public double getExcessPercent() {
