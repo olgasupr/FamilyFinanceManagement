@@ -1,6 +1,7 @@
 package com.olga.familyfinancemanagement.controllers;
 
 import com.olga.familyfinancemanagement.models.Income;
+import com.olga.familyfinancemanagement.services.AnalysisService;
 import com.olga.familyfinancemanagement.services.IncomeService;
 import com.olga.familyfinancemanagement.services.SpendingService;
 import com.olga.familyfinancemanagement.utils.DateUtils;
@@ -19,12 +20,12 @@ public class MainController {
 
     private final SpendingService spendingService;
     private final IncomeService incomeService;
+    private final AnalysisService analysisService;
 
     @GetMapping
     String redirectToHome() {
         return "redirect:/home";
     }
-
 
     @GetMapping(value = "/home")
     String getHomePage(
@@ -36,6 +37,8 @@ public class MainController {
 
         model.addAttribute("spending", spendingService.getActualSpendingsForMonth(month));
         model.addAttribute("income", income.getAmount());
+        model.addAttribute("analyses", analysisService.getAnalysesForMonth(month));
+
         return "home";
     }
 
@@ -90,6 +93,8 @@ public class MainController {
 
         model.addAttribute("spending", spendingService.getActualSpendingsForMonth(month));
         model.addAttribute("income", income.getAmount());
+        model.addAttribute("analyses", analysisService.getAnalysesForMonth(month));
+
         return "analysis";
     }
 

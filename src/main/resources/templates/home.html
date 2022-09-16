@@ -117,10 +117,12 @@
           </tr>
           </thead>
 
-        </table>
-
-        <table style="margin-left: 50px; width: 90%">
           <tbody>
+          <tr th:each="analysis: ${analyses}">
+            <td th:text="${analysis.spendingCategoryName}" th:title="${analysis.spendingCategoryDescription}"></td>
+            <td th:text="${analysis.targetSpendingPercent}"></td>
+            <td th:text="${analysis.actualSpendingPercent}"></td>
+          </tr>
           <tr>
             <td><a th:href="${'/analysis?yyyymm='+ #dates.format(thisMonth, 'yyyyMM')}"><button>VIEW ANALYSIS</button></a></td>
           </tr>

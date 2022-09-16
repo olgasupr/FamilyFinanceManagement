@@ -23,8 +23,4 @@ public class TargetSpending {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     private SpendingCategory spendingCategory;
-
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "period_id", referencedColumnName = "id")
-    private Period period;
 }

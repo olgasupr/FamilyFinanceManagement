@@ -15,6 +15,8 @@ Visual issues:
 	7.  FIXED	spending page:  modal:  number-format the amount box
 	8.  home page:  sort the spending by date (?)
 	9.  home page:  only return the last 15(?) rows for spending (?)
+	10.  spending page:  table has fonts that are too small
+	11.  home page - format analysis as percentages, round off actuals and maybe targets
 
 	
 Other issues:
@@ -31,7 +33,7 @@ Other issues:
 	
 To implement generally
 	1.  DONE	Populate the target percentages to database
-	2.  home page:  populate analysis table
+	2.  DONE 	home page:  populate analysis table
 	3.  Analysis page:
 		- SpendingCategory (categoryName, а description когда hover)
 		- Target %  (из таблицы target_spending)
@@ -43,6 +45,7 @@ To implement generally
 	4.  ASKED OLGA L	Implement SpendingService.getAllSpendingCategories(), SpendingService.getAllTargetSpending(), SpendingService.getSavingsSpendingCategory()
 	5.  DONE	spending page:  Populate dropdown using SpendingService.getAllSpendingCategories()
 	6.  DONE	AnalysisService and Analysis
+	7.  home page:  populate evaluation for analysis
 
 
 
