@@ -7,6 +7,7 @@ import com.olga.familyfinancemanagement.repositories.ActualSpendingRepository;
 import com.olga.familyfinancemanagement.repositories.TargetSpendingRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -43,7 +44,7 @@ public class SpendingService {
                 new SpendingCategory(70, "Insurance", "Health, house, auto, life, etc."),
                 new SpendingCategory(71, "Recreation", "Travel, entertainment, lifestyle expenses, etc."),
                 new SpendingCategory(72, "Giving", "Donation, etc.")
-                );
+        );
     }
 
     public List<TargetSpending> getAllTargetSpending() {
@@ -52,5 +53,9 @@ public class SpendingService {
 
     public SpendingCategory getSavingsSpendingCategory() {
         return null;  //TODO
+    }
+
+    public void addSpending(final Date date, final double amount, final int categoryId) {
+        //TODO:  insert into database
     }
 }

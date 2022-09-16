@@ -66,8 +66,8 @@ public class MainController {
         return "spending";
     }
 
-    @PostMapping(value = "/postSpending")
-    public String addOrUpdateSpending(
+    @PostMapping(value = "/addSpending")
+    public String addSpending(
             String yyyymm,
             String amount,
             int categoryId,
@@ -77,6 +77,11 @@ public class MainController {
         System.out.println("amount = " + amount);
         System.out.println("categoryId = " + categoryId);
         System.out.println("date = " + date);
+
+
+        double amountAsDouble = parseMoneyField(amount);
+
+        spendingService.addSpending(date, amountAsDouble, categoryId);
 
         return "redirect:/spending?yyyymm=" + yyyymm;
     }
