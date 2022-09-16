@@ -1,0 +1,51 @@
+
+Outstanding known issues:
+==========================
+
+
+
+Visual issues:
+	1.  all pages:  Make arrows nicer on the Month switcher
+	2.  all pages:  edit income says "Please enter your family's income per month:"
+			Better if it said "Please enter your family's income for September 2022:"
+	3.  home page:  "Your family's recent spending" should say "Your family's spending for September 2022"
+	4.  home page:  "Last month's analysis" should say "Analysis for September 2022"
+	5.  spending page:  modal:  make the modal not have scrollbar
+	6.  FIXED	spending page:  modal:  make the style of dropdown better
+	7.  FIXED	spending page:  modal:  number-format the amount box
+
+	
+Other issues:
+	1.  FIXED 	all pages:  Links in navbar should include the month
+	2.  FIXED 	home page:  ADD MORE  on income missing yyyymm parameter
+	3.  FIXED 	home page:  VIEW ANALYSIS on income missing yyyymm parameter
+	4.  all pages:  edit income --> submit  always leads to home, should lead to source page
+	5.  FIXED 	database:  ??drop within_income column from target_spending
+			what does this column mean?
+			how can we perform analysis with this?
+	6.  FIXED 	spending page:  modal:  when incomplete info supplied, and click submit, error occurs.
+	7.  FIXED	home page:  modal:  when nothing typed into input, error occurs.
+	
+	
+To implement generally
+	1.  Populate the target percentages to database
+	2.  home page:  populate analysis table
+	3.  Analysis page:
+		- SpendingCategory (categoryName, а description когда hover)
+		- Target %  (из таблицы target_spending)
+		- TargetAmount = Target % * Income
+		- Actual % =  ActualAmount / Income
+		- ActualAmount = (из таблицы actual_spending)
+		- Excess % = Actual % - Target %
+		- ExcessAmount = ActualAmount - TargetAmount
+	4.  ASKED OLGA L:	Implement SpendingService.getAllSpendingCategories(), SpendingService.getAllTargetSpending(), SpendingService.getSavingsSpendingCategory()
+	5.  DONE:	spending page:  Populate dropdown using SpendingService.getAllSpendingCategories()
+	6.  DONE:	AnalysisService and Analysis
+
+
+
+========================================================================================
+
+
+
+
