@@ -181,6 +181,11 @@
         event.target.value = formatInputAmount(event.target.value.replace(/[^\d\.]+/gi, ''))
     );
 
+    /* amount spent editing -> comma separation enabling */
+    document.getElementById('amountSpent').addEventListener('input', event =>
+        event.target.value = formatInputAmount(event.target.value.replace(/[^\d\.]+/gi, ''))
+    );
+
     /* Date picker */
     document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.datepicker');
