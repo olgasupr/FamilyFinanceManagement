@@ -92,8 +92,9 @@
 
                 <!-- Modal ADD SPENDING Structure -->
                 <div id="modal2" class="modal">
-                    <form>
+                    <form method="post" action="postSpending">
                         <div class="modal-content">
+                            <input type="hidden" name="yyyymm" th:value="${#dates.format(thisMonth, 'yyyyMM')}">
                             <h5>Add spending category: </h5>
                             <div class="input-field" id="categoriesSelector">
                                 <select class="form-control">
@@ -111,7 +112,7 @@
                                     <form class="col s12">
                                         <div class="row">
                                             <div class="input-field">
-                                                <input id="amountSpent" type="text" class="validate">
+                                                <input id="amountSpent" name="amount" type="text" class="validate">
                                             </div>
                                         </div>
                                     </form>
@@ -126,7 +127,10 @@
 
                         <!--Modal ADD SPENDING footer-->
                         <div class="modal-footer" style="background-color: #01579b">
-                            <button id="submitAddSpendingModalButton" class="modal-close light-blue darken-4 btn-large" type="submit" name="action">
+                            <button id="submitAddSpendingModalButton"
+                                    class="modal-close light-blue darken-4 btn-large"
+                                    type="submit"
+                                    name="action">
                                 Submit<i class="material-icons right">send</i>
                             </button>
                         </div>

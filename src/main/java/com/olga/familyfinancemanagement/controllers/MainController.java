@@ -66,6 +66,21 @@ public class MainController {
         return "spending";
     }
 
+    @PostMapping(value = "/postSpending")
+    public String addOrUpdateSpending(
+            String yyyymm,
+            String amount,
+            int categoryId,
+            Date date) {
+
+        System.out.println("yyyymm = " + yyyymm);
+        System.out.println("amount = " + amount);
+        System.out.println("categoryId = " + categoryId);
+        System.out.println("date = " + date);
+
+        return "redirect:/spending?yyyymm=" + yyyymm;
+    }
+
     @GetMapping(value = "/analysis")
     public String getAnalysis(
             @RequestParam(value = "yyyymm", required = false) String yyyymm,
