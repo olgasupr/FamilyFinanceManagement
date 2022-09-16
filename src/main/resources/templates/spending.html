@@ -63,14 +63,12 @@
                     <p></p>
                     <p></p>
                     <div class="row">
-                        <form class="col s12">
-                            <div class="input-wrap">
-                                <div class="input-field col s6">
-                                    <input id="Income" name="amount" type="text" pattern="^[\d,]+\.?\d?\d?$" class="validate">
-                                    <input type="hidden" name="yyyymm" th:value="${#dates.format(thisMonth, 'yyyyMM')}">
-                                </div>
+                        <div class="input-wrap">
+                            <div class="input-field col s6">
+                                <input id="Income" name="amount" type="text" pattern="^[\d,]+\.?\d?\d?$" class="validate">
+                                <input type="hidden" name="yyyymm" th:value="${#dates.format(thisMonth, 'yyyyMM')}">
                             </div>
-                        </form>
+                        </div>
                     </div>
 
                     <div class="modal-footer" style="background-color:#01579b">
