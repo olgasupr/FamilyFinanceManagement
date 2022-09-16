@@ -12,50 +12,140 @@
 
 <body>
 
+<!-- navbar start -->
+<div class="navbar-fixed">
+  <nav class="light-blue darken-4">
+    <div class="nav-wrapper">
+      <ul style="padding-left: 20px; font-size: x-large">
+        <li style="color: white"><b>Family Finance Management</b></li>
+      </ul>
+
+      <ul class="right hide-on-med-and-down">
+        <li><a th:href="${'/home?yyyymm='+ #dates.format(thisMonth, 'yyyyMM')}"><b style="font-size: large">Home</b></a></li>
+        <li><a id="editLink" data-target="modal1" class="modal-trigger"><b style="font-size: large">Edit Income</b></a></li>
+        <li><a th:href="${'/spending?yyyymm='+ #dates.format(thisMonth, 'yyyyMM')}"><b style="font-size: large">Edit spending</b></a></li>
+        <li><a th:href="${'/analysis?yyyymm='+ #dates.format(thisMonth, 'yyyyMM')}"><b style="font-size: large">View analysis</b></a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+<!-- navbar end -->
+
+
 <main>
-  <br>
-  <br>
-
-
   <!-- Upper row -->
+  <br>
+  <div class="row center" style="color: white; font-size: xx-large">
+    <div class="col s12">
+      <a th:href="${'/home?yyyymm=' + #dates.format(lastMonth, 'yyyyMM')}"><b style="font-size: large">←</b></a>
+      <b id="headingMonth" th:text="${#dates.monthName(thisMonth) + ' ' + #dates.year(thisMonth)}"></b>
+      <a th:href="${'/home?yyyymm=' + #dates.format(nextMonth, 'yyyyMM')}"><b style="font-size: large">→</b></a>
+    </div>
+  </div>
+
   <div class="row center" style="color: white">
-    <div class="col s12"style="font-size: xxx-large; padding-bottom: 30px">
-      <button data-target="modal1" class="btn modal-trigger" style="font-size: xx-large; background-color: #01579b; color: white"><b>EDIT</b></button>
+    <div class="col s12">
+      <b id="heading">Your family's monthly income is €</b>
+      <div id="incomeInput" th:text="${#numbers.formatDecimal(income, 0, 'COMMA', 2, 'POINT')}"></div>
+
+      <!--Modal trigger-->
+      <button id="editButton" data-target="modal1" class="btn modal-trigger"><b>EDIT</b></button>
     </div>
 
-    <!-- Modal  -->
+    <!-- Modal EDIT INCOME body -->
     <div id="modal1" class="modal">
-      <div class="modal-content">
-        <h4>Please enter your family's income per month: </h4>
-        <p></p>
-        <p></p>
-        <div class="row">
-          <form class="col s12">
+
+      <form method="post" action="income">
+        <div class="modal-content">
+          <h4 style="margin-left: 30px">Please enter your family's income per month: </h4>
+          <p></p>
+          <p></p>
+          <div class="row">
             <div class="input-wrap">
               <div class="input-field col s6">
-                <input id="Income" type="text" pattern="^[\d,]+$" class="validate">
+                <input id="Income" name="amount" type="text" pattern="^[\d,]+\.?\d?\d?$" class="validate">
+                <input type="hidden" name="yyyymm" th:value="${#dates.format(thisMonth, 'yyyyMM')}">
               </div>
             </div>
-          </form>
-        </div>
+          </div>
 
-        <div class="modal-footer" style="background-color:#01579b">
-          <button class="modal-close light-blue darken-4 btn-large" type="submit" name="action" style="color:white; font-size: x-large; font-family: 'Times New Roman'">
+          <div class="modal-footer" style="background-color:#01579b">
+            <button class="modal-close light-blue darken-4 btn-large" type="submit" name="action" style="color:white; font-size: x-large; font-family: 'Times New Roman'">
               Submit<i class="material-icons right">send</i>
-          </button>
+            </button>
+          </div>
         </div>
-      </div>
+      </form>
     </div>
-    <!-- Modal end -->
+    <!-- Modal EDIT INCOME end -->
+
+    <div class="row center" style="color: white; padding-bottom: 30px">
+      <div class="col s6" style="font-size: xx-large; margin-top: 30px"><b style="text-decoration: underline">Your family's recent spending</b>
+        <p></p>
+        <table style="margin-left: 50px; width: 90%">
+
+          <thead>
+          <tr>
+            <th style="width: 33%">Category</th>
+            <th style="width: 34%">Amount</th>
+            <th style="width: 33%">Date</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr th:each="spendingItem: ${spending}">
+            <td th:text="${spendingItem.spendingCategory.categoryName}" th:title="${spendingItem.spendingCategory.description}"></td>
+            <td th:text="${spendingItem.amount}"></td>
+            <td th:text="${#dates.format(spendingItem.spendingDate, 'dd-MM-yyyy')}"></td>
+          </tr>
+          </tbody>
+        </table>
+
+        <table style="margin-left: 50px; width: 90%">
+          <tbody>
+          <tr>
+            <td>Last spending was on ... </td>
+          </tr>
+          <tr>
+            <td><a th:href="${'/spending?yyyymm='+ #dates.format(thisMonth, 'yyyyMM')}"><button>ADD MORE</button></a></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col s6" style="font-size: xx-large; margin-top: 30px"><b style="text-decoration: underline">Last month's analysis</b>
+        <p></p>
+        <table class="responsive-table" style="margin-left: 50px; width: 90%">
+          <thead>
+          <tr>
+            <th style="width: 40%">Category</th>
+            <th style="width: 20%">Target %</th>
+            <th style="width: 20%;">Your %</th>
+            <th style="width: 20%">Evaluation</th>
+          </tr>
+          </thead>
+
+        </table>
+
+        <table style="margin-left: 50px; width: 90%">
+          <tbody>
+          <tr>
+            <td><a th:href="${'/analysis?yyyymm='+ #dates.format(thisMonth, 'yyyyMM')}"><button>VIEW ANALYSIS</button></a></td>
+          </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+    </div>
 
   </div>
 </main>
 
-
-
-
 <!-- Initialization -->
 <script type="text/javascript" src="../js/materialize.min.js"></script>
+<!--calling method from js file-->
+<script type="text/javascript" src="../js/utils.js"></script>
 <script>
   /* nav bar initialization */
   document.addEventListener('DOMContentLoaded', function () {
@@ -72,7 +162,7 @@
 
   /* Income editing -> comma separation enabling */
   document.getElementById('Income').addEventListener('input', event =>
-          event.target.value = (parseInt(event.target.value.replace(/[^\d]+/gi, '')) || 0).toLocaleString('en-US')
+          event.target.value = formatInputAmount(event.target.value.replace(/[^\d\.]+/gi, ''))
   );
 
 </script>
