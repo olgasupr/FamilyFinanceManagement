@@ -101,9 +101,9 @@
         <tr th:each="analysis: ${analyses}">
             <td th:text="${analysis.spendingCategoryName}" th:title="${analysis.spendingCategoryDescription}"></td>
             <td th:text="${#numbers.formatPercent(analysis.targetSpendingPercent, 1, 0)}"></td>
-            <td th:text="${analysis.targetSpendingAmount}"></td>
+            <td th:text="${#numbers.formatDecimal(analysis.targetSpendingAmount, 0, 'COMMA', 2, 'POINT')}"></td>
             <td th:text="${#numbers.formatPercent(analysis.actualSpendingPercent, 1, 0)}"></td>
-            <td th:text="${analysis.actualSpendingAmount}"></td>
+            <td th:text="${#numbers.formatDecimal(analysis.actualSpendingAmount, 0, 'COMMA', 2, 'POINT')}"></td>
             <td th:text="${analysis.evaluation}"></td>
         </tr>
 

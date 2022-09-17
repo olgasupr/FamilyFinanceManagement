@@ -18,8 +18,8 @@ Visual issues:
 	10.  spending page:  table has fonts that are too small
 	11.  FIXED	home page - format analysis as percentages, round off actuals and maybe targets
 	12.  FIXED 	spending page:  delete button looks like crap
-	13.  spending page:  format amount using commas, e.g. 1,234.56
-	14.  analysis page:  format amount using commas, e.g. 1,234.56
+	13.  FIXED	spending page:  format amount using commas, e.g. 1,234.56
+	14.  FIXED	analysis page:  format amount using commas, e.g. 1,234.56
 
 	
 Other issues:
@@ -46,10 +46,10 @@ To implement generally
 		- ActualAmount = (из таблицы actual_spending)
 		- Excess % = Actual % - Target %
 		- ExcessAmount = ActualAmount - TargetAmount
-	4.  ASKED OLGA L	Implement SpendingService.getAllSpendingCategories(), SpendingService.getAllTargetSpending(), SpendingService.getSavingsSpendingCategory()
+	4.  DONE	Implement SpendingService.getAllSpendingCategories(), SpendingService.getAllTargetSpending(), SpendingService.getSavingsSpendingCategory()
 	5.  DONE	spending page:  Populate dropdown using SpendingService.getAllSpendingCategories()
 	6.  DONE	AnalysisService and Analysis
-	7.  home page:  populate evaluation for analysis
+	7.  DONE	home page:  populate evaluation for analysis
 	8.  DONE 	spendidng page:  implement delete spending for each row
 	9.  spending page:  implement update button for each row
 

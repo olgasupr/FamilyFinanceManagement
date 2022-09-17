@@ -149,7 +149,7 @@
                 <tbody>
                 <tr th:each="spendingItem: ${spending}">
                     <td th:text="${spendingItem.spendingCategory.categoryName}" th:title="${spendingItem.spendingCategory.description}"></td>
-                    <td th:text="${spendingItem.amount}"></td>
+                    <td th:text="${#numbers.formatDecimal(spendingItem.amount, 0, 'COMMA', 2, 'POINT')}"></td>
                     <td th:text="${#dates.format(spendingItem.spendingDate, 'dd-MM-yyyy')}"></td>
                     <td>  <!-- delete button -->
                         <form method="post" action="deleteSpending">
