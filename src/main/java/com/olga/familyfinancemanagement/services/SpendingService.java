@@ -21,6 +21,7 @@ public class SpendingService {
     private final ActualSpendingRepository actualSpendingRepository;
     private final TargetSpendingRepository targetSpendingRepository;
     private final SpendingCategoryRepository spendingCategoryRepository;
+
     public List<ActualSpending> getActualSpendingsForMonth(Date month) {
         Date thisMonth = getFirstDayOfMonth(month);
         Date nextMonth = addMonths(thisMonth, 1);
@@ -37,7 +38,7 @@ public class SpendingService {
     }
 
     public SpendingCategory getSavingsSpendingCategory() {
-        return spendingCategoryRepository.findFirstByCategoryNameIgnoreCase("savings");
+        return spendingCategoryRepository.findFirstByCategoryNameIgnoreCase(SpendingCategory.savingsCategoryName);
     }
 
     public void addActualSpending(final double amount, final Date date, final int categoryId) {

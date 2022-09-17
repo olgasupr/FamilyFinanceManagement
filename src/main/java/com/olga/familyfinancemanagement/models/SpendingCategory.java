@@ -12,6 +12,8 @@ import javax.persistence.*;
 @Table(name = "spending_category")
 public class SpendingCategory {
 
+    public final static String savingsCategoryName = "Savings";
+
     @Id
     @Column(name = "id")
     @GeneratedValue
@@ -22,4 +24,8 @@ public class SpendingCategory {
 
     @Column(name = "description")
     private String description;
+
+    public boolean isSavings() {
+        return savingsCategoryName.equals(categoryName);
+    }
 }

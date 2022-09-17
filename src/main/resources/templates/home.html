@@ -122,6 +122,7 @@
             <td th:text="${analysis.spendingCategoryName}" th:title="${analysis.spendingCategoryDescription}"></td>
             <td th:text="${#numbers.formatPercent(analysis.targetSpendingPercent, 1, 0)}"></td>
             <td th:text="${#numbers.formatPercent(analysis.actualSpendingPercent, 1, 0)}"></td>
+            <td th:text="${analysis.evaluation}"></td>
           </tr>
           <tr>
             <td><a th:href="${'/analysis?yyyymm='+ #dates.format(thisMonth, 'yyyyMM')}"><button>VIEW ANALYSIS</button></a></td>

@@ -49,4 +49,20 @@ public class Analysis {
     public double getExcessAmount() {
         return getActualSpendingAmount() - getTargetSpendingAmount();
     }
+
+    public String getEvaluation() {
+        if (spendingCategory.isSavings()) {
+            if (getExcessAmount() >= 0) {
+                return "GOOD";
+            } else {
+                return "BAD";
+            }
+        } else {
+            if (getExcessAmount() <= 0) {
+                return "GOOD";
+            } else {
+                return "BAD";
+            }
+        }
+    }
 }
