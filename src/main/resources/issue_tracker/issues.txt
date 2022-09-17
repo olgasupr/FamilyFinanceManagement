@@ -52,6 +52,7 @@ To implement generally
 	7.  DONE	home page:  populate evaluation for analysis
 	8.  DONE 	spendidng page:  implement delete spending for each row
 	9.  spending page:  implement update button for each row
+	10.  Implement SpendingService.deleteActualSpending,  SpendingService.updateActualSpending
 
 
 
