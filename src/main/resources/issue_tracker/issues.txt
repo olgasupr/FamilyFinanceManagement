@@ -38,7 +38,7 @@ Other issues:
 To implement generally
 	1.  DONE	Populate the target percentages to database
 	2.  DONE 	home page:  populate analysis table
-	3.  Analysis page:
+	3.  DONE	Analysis page:
 		- SpendingCategory (categoryName, а description когда hover)
 		- Target %  (из таблицы target_spending)
 		- TargetAmount = Target % * Income
