@@ -46,11 +46,11 @@ public class SpendingService {
     }
 
     public void updateActualSpending(final int id, final double amount, final Date date, final int categoryId) {
-        //TODO:  implement
+        actualSpendingRepository.save(new ActualSpending(id, amount, date, getSpendingCategory(categoryId)));
     }
 
     public void deleteActualSpending(final int id) {
-        //TODO:  implement
+        actualSpendingRepository.deleteById(id);
     }
 
     private SpendingCategory getSpendingCategory(final int categoryId) {
