@@ -25,7 +25,7 @@ public class SpendingService {
     public List<ActualSpending> getActualSpendingsForMonth(Date month) {
         Date thisMonth = getFirstDayOfMonth(month);
         Date nextMonth = addMonths(thisMonth, 1);
-        return actualSpendingRepository.findBySpendingDateGreaterThanEqualAndSpendingDateLessThan(
+        return actualSpendingRepository.findBySpendingDateGreaterThanEqualAndSpendingDateLessThanOrderBySpendingDateDesc(
                 thisMonth, nextMonth);
     }
 

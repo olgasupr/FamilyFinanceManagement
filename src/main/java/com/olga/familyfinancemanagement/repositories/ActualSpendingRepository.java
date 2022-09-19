@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface ActualSpendingRepository extends CrudRepository<ActualSpending, Integer> {
 
-    List<ActualSpending> findBySpendingDateGreaterThanEqualAndSpendingDateLessThan(final Date fromDate, final Date toDate);
+    List<ActualSpending> findBySpendingDateGreaterThanEqualAndSpendingDateLessThanOrderBySpendingDateDesc(final Date fromDate, final Date toDate);
 }
