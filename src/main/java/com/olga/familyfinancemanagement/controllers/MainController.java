@@ -69,6 +69,31 @@ public class MainController {
         return "spending";
     }
 
+    @PostMapping(value = "incomeEditSpendingPage")
+    public String updateIncomeEditSpending(
+            String yyyymm,
+            String amount) {
+
+        Date month = getMonthFromYYYYMM(yyyymm);
+        double amountAsDouble = parseMoneyField(amount);
+
+        incomeService.createOrUpdateIncome(month, amountAsDouble);
+        return "redirect:/spending?yyyymm=" + yyyymm;
+    }
+
+    @PostMapping(value = "/incomeAnalysisPage")
+    public String updateIncomeAnalysis(
+            String yyyymm,
+            String amount) {
+
+        Date month = getMonthFromYYYYMM(yyyymm);
+        double amountAsDouble = parseMoneyField(amount);
+
+        incomeService.createOrUpdateIncome(month, amountAsDouble);
+        return "redirect:/analysis?yyyymm=" + yyyymm;
+    }
+
+
     @PostMapping(value = "/addSpending")
     public String addSpending(
             String yyyymm,
