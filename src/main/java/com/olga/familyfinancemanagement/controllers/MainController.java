@@ -108,6 +108,20 @@ public class MainController {
         return "redirect:/spending?yyyymm=" + yyyymm;
     }
 
+    @PostMapping(value = "/editSpending")
+    public String editSpending(
+            String yyyymm,
+            String amount,
+            int categoryId,
+            Date date) {
+
+        double amountAsDouble = parseMoneyField(amount);
+
+        spendingService.updateActualSpending(amountAsDouble, date, categoryId);
+
+        return "redirect:/spending?yyyymm=" + yyyymm;
+    }
+
     @PostMapping(value = "/deleteSpending")
     public String deleteSpending(
             String yyyymm,

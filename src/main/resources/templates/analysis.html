@@ -39,9 +39,9 @@
     <br>
     <div class="row center" style="color: white; font-size: xx-large">
         <div class="col s12">
-            <a th:href="${'/spending?yyyymm=' + #dates.format(lastMonth, 'yyyyMM')}"><b style="font-size: large">←</b></a>
+            <a th:href="${'/analysis?yyyymm=' + #dates.format(lastMonth, 'yyyyMM')}"><b style="font-size: large">←</b></a>
             <b id="headingMonth" th:text="${#dates.monthName(thisMonth) + ' ' + #dates.year(thisMonth)}"></b>
-            <a th:href="${'/spending?yyyymm=' + #dates.format(nextMonth, 'yyyyMM')}"><b style="font-size: large">→</b></a>
+            <a th:href="${'/analysis?yyyymm=' + #dates.format(nextMonth, 'yyyyMM')}"><b style="font-size: large">→</b></a>
         </div>
     </div>
 
@@ -104,7 +104,7 @@
             <td th:text="${#numbers.formatDecimal(analysis.targetSpendingAmount, 0, 'COMMA', 2, 'POINT')}"></td>
             <td th:text="${#numbers.formatPercent(analysis.actualSpendingPercent, 1, 0)}"></td>
             <td th:text="${#numbers.formatDecimal(analysis.actualSpendingAmount, 0, 'COMMA', 2, 'POINT')}"></td>
-            <td th:text="${analysis.evaluation}"></td>
+            <td th:style="|${analysis.evaluation == 'BAD' ? 'color: #FF5733;' : 'color: #32CD32;'}|" th:text="${analysis.evaluation}"></td>
         </tr>
 
         </tbody>

@@ -45,8 +45,8 @@ public class SpendingService {
         actualSpendingRepository.save(new ActualSpending(null, amount, date, getSpendingCategory(categoryId)));
     }
 
-    public void updateActualSpending(final int id, final double amount, final Date date, final int categoryId) {
-        actualSpendingRepository.save(new ActualSpending(id, amount, date, getSpendingCategory(categoryId)));
+    public void updateActualSpending(final double amount, final Date date, final int categoryId) {
+        actualSpendingRepository.save(new ActualSpending(amount, date, getSpendingCategory(categoryId)));
     }
 
     public void deleteActualSpending(final int id) {
