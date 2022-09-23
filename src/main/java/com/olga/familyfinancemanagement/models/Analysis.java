@@ -65,4 +65,13 @@ public class Analysis {
             }
         }
     }
+
+    public String getMaxMin() {
+        if (spendingCategory.isSavings()) {
+            return "min";
+        }
+        else {
+            return "max";
+        }
+    }
 }

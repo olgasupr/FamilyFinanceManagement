@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" th:href="@{/css/materialize.min.css}" media="screen,projection" />
-    <link type="text/css" rel="stylesheet" th:href="@{/css/main.css}" media="screen, projection" />
-    <link type="text/css" rel="stylesheet" th:href="@{/css/analysis.css}" media="screen, projection" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/materialize.min.css}" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/main.css}" media="screen, projection"/>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/analysis.css}" media="screen, projection"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 
 <body>
@@ -18,14 +18,18 @@
     <nav class="light-blue darken-4">
         <div class="nav-wrapper">
             <ul style="padding-left: 20px; font-size: x-large">
-                <li style="color: white"><b>Family Finance Management</b></li>
+                <li style="color: white; font-family: 'Times New Roman'"><b>Family Finance Management</b></li>
             </ul>
 
             <ul class="right hide-on-med-and-down">
-                <li><a th:href="${'/home?yyyymm='+ #dates.format(thisMonth, 'yyyyMM')}"><b style="font-size: large">Home</b></a></li>
-                <li><a id="editLink" data-target="modal1" class="modal-trigger"><b style="font-size: large">Edit Income</b></a></li>
-                <li><a th:href="${'/spending?yyyymm='+ #dates.format(thisMonth, 'yyyyMM')}"><b style="font-size: large">Edit spending</b></a></li>
-                <li><a th:href="${'/analysis?yyyymm='+ #dates.format(thisMonth, 'yyyyMM')}"><b style="font-size: large">View analysis</b></a></li>
+                <li><a th:href="${'/home?yyyymm='+ #dates.format(thisMonth, 'yyyyMM')}"><b
+                        style="font-size: large">Home</b></a></li>
+                <li><a id="editLink" data-target="modal1" class="modal-trigger"><b style="font-size: large">Edit
+                    Income</b></a></li>
+                <li><a th:href="${'/spending?yyyymm='+ #dates.format(thisMonth, 'yyyyMM')}"><b style="font-size: large">Edit
+                    spending</b></a></li>
+                <li><a th:href="${'/analysis?yyyymm='+ #dates.format(thisMonth, 'yyyyMM')}"><b style="font-size: large">View
+                    analysis</b></a></li>
 
             </ul>
         </div>
@@ -39,9 +43,11 @@
     <br>
     <div class="row center" style="color: white; font-size: xx-large">
         <div class="col s12">
-            <a th:href="${'/analysis?yyyymm=' + #dates.format(lastMonth, 'yyyyMM')}"><b style="font-size: large">←</b></a>
+            <a th:href="${'/analysis?yyyymm=' + #dates.format(lastMonth, 'yyyyMM')}"><b
+                    style="font-size: large">←</b></a>
             <b id="headingMonth" th:text="${#dates.monthName(thisMonth) + ' ' + #dates.year(thisMonth)}"></b>
-            <a th:href="${'/analysis?yyyymm=' + #dates.format(nextMonth, 'yyyyMM')}"><b style="font-size: large">→</b></a>
+            <a th:href="${'/analysis?yyyymm=' + #dates.format(nextMonth, 'yyyyMM')}"><b
+                    style="font-size: large">→</b></a>
         </div>
     </div>
 
@@ -59,20 +65,23 @@
 
             <form method="post" action="incomeAnalysisPage">
                 <div class="modal-content">
-                    <p id="modalHeading" style="margin-left: 30px">Please enter your family's income per month: </p>
+                    <p id="modalHeading" style="margin-left: 30px; font-size: xx-large">Please enter your family's income per month: </p>
                     <p></p>
                     <p></p>
                     <div class="row">
                         <div class="input-wrap">
                             <div class="input-field col s6">
-                                <input id="Income" name="amount" type="text" pattern="^[\d,]+\.?\d?\d?$" class="validate" required>
-                                <input type="hidden" name="yyyymm" th:value="${#dates.format(thisMonth, 'yyyyMM')}" required>
+                                <input id="Income" name="amount" type="text" pattern="^[\d,]+\.?\d?\d?$"
+                                       class="validate" required>
+                                <input type="hidden" name="yyyymm" th:value="${#dates.format(thisMonth, 'yyyyMM')}"
+                                       required>
                             </div>
                         </div>
                     </div>
 
                     <div class="modal-footer" style="background-color:#01579b">
-                        <button class="modal-close light-blue darken-4 btn-large" type="submit" name="action" style="color:white; font-size: x-large; font-family: 'Times New Roman'">
+                        <button class="modal-close light-blue darken-4 btn-large" type="submit" name="action"
+                                style="color:white; font-size: x-large; font-family: 'Times New Roman'">
                             Submit<i class="material-icons right">send</i>
                         </button>
                     </div>
@@ -84,35 +93,36 @@
 
     <h4>Current month's analysis</h4>
     <div class="col s12" id="tableAnalysis">
-    <p></p>
-    <table class="responsive-table" style="margin-left: 50px; width: 90%">
-        <thead>
-        <tr>
-            <th style="width: 17%">Category</th>
-            <th style="width: 17%">Target %</th>
-            <th style="width: 19%">Target €</th>
-            <th style="width: 17%;">Your %</th>
-            <th style="width: 19%;">Your €</th>
-            <th style="width: 10%">Evaluation</th>
-        </tr>
-        </thead>
+        <p></p>
+        <table class="responsive-table" style="margin-left: 80px; width: 80%">
+            <thead>
+            <tr>
+                <th style="width: 21%">Category</th>
+                <th colspan="2" style="width: 19%; text-align: center">Target %</th>
+                <th colspan="2" style="width: 19%; padding-left: 60px">Target €</th>
+                <th style="width: 15%">Your %</th>
+                <th style="width: 17%">Your €</th>
+                <th style="width: 9%">Evaluation</th>
+            </tr>
+            </thead>
 
-        <tbody>
-        <tr th:each="analysis: ${analyses}">
-            <td th:text="${analysis.spendingCategoryName}" th:title="${analysis.spendingCategoryDescription}"></td>
-            <td th:text="${#numbers.formatPercent(analysis.targetSpendingPercent, 1, 0)}"></td>
-            <td th:text="${#numbers.formatDecimal(analysis.targetSpendingAmount, 0, 'COMMA', 2, 'POINT')}"></td>
-            <td th:text="${#numbers.formatPercent(analysis.actualSpendingPercent, 1, 0)}"></td>
-            <td th:text="${#numbers.formatDecimal(analysis.actualSpendingAmount, 0, 'COMMA', 2, 'POINT')}"></td>
-            <td th:style="|${analysis.evaluation == 'BAD' ? 'color: #FF5733;' : 'color: #32CD32;'}|" th:text="${analysis.evaluation}"></td>
-        </tr>
+            <tbody>
+            <tr th:each="analysis: ${analyses}">
+                <td th:text="${analysis.spendingCategoryName}" th:title="${analysis.spendingCategoryDescription}"></td>
+                <td style="text-align: right" th:text="${analysis.maxMin}"></td>
+                <td th:text="${#numbers.formatPercent(analysis.targetSpendingPercent, 1, 0)}"></td>
+                <td style="text-align: right" th:text="${analysis.maxMin}"></td>
+                <td th:text="${#numbers.formatDecimal(analysis.targetSpendingAmount, 0, 'COMMA', 2, 'POINT')}"></td>
+                <td style="padding-left: 17px" th:text="${#numbers.formatPercent(analysis.actualSpendingPercent, 1, 0)}"></td>
+                <td style="padding-left: 17px" th:text="${#numbers.formatDecimal(analysis.actualSpendingAmount, 0, 'COMMA', 2, 'POINT')}"></td>
+                <td style="text-align: center" th:style="|${analysis.evaluation == 'BAD' ? 'color: #FF5733;' : 'color: #32CD32;'}|"
+                    th:text="${analysis.evaluation}"></td>
+            </tr>
 
-        </tbody>
-    </table>
+            </tbody>
+        </table>
 
     </div>
-
-
 
 
 </main>
@@ -129,7 +139,7 @@
     });
 
     /* Modal initialization */
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         var elems = document.querySelectorAll('.modal');
         var instances = M.Modal.init(elems, {});
         var instance = M.Modal.getInstance(elem);

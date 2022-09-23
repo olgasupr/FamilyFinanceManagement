@@ -19,7 +19,7 @@
 }
 
 #submitAddSpendingModalButton, #submitEditSpendingModalButton, #confirmButton, #updateButton, #cancelButton, #deleteButton {
-    color:white;
+    color: white;
     font-size: x-large;
     font-family: 'Times New Roman';
     margin-bottom: 20px;
@@ -32,7 +32,7 @@ h5 {
     font-family: "Times New Roman";
 }
 
-#categoriesSelector, #updateCategoriesSelector{
+#categoriesSelector, #updateCategoriesSelector {
     margin-left: 100px;
     width: 250px;
     color: white;
@@ -83,7 +83,10 @@ td {
     text-align: center;
 }
 
-
+#modalHeading {
+    font-size: xx-large;
+    font-family: "Times New Roman";
+}
 
 
 
