@@ -154,17 +154,14 @@
 
                     <!-- delete button -->
                     <td>
-
                            <!-- Modal Trigger -->
                             <button id="deleteButton" data-target="modalConfirmDelete" class="btn modal-trigger light-blue darken-4 btn-small" type="submit" name="action" style="margin-bottom: 7px">DELETE</button>
-
                             <!-- Modal Structure -->
                             <div id="modalConfirmDelete" class="modal">
                                 <div class="modal-content">
                                     <p id="confirmationQuestion">Are you sure you want to delete the spending chosen?</p>
                                 </div>
                                 <div class="modal-footer" style="background-color: #01579b">
-
                                     <form method="post" action="deleteSpending" style="width: 200px; display: inline-block">
                                         <input type="hidden" name="yyyymm" th:value="${#dates.format(thisMonth, 'yyyyMM')}" required>
                                         <input type="hidden" name="actualSpendingId" th:value="${spendingItem.id}" required>
@@ -173,43 +170,50 @@
                                     <form id="cancelDelete" style="width: 200px;  display: inline-block">
                                     <button id="cancelButton" class="modal-close light-blue darken-4 btn-small btn-flat">Cancel<i class="material-icons right">send</i></button>
                                     </form>
-
                                 </div>
-
                             </div>
                     </td>
-
 
                     <!--Modal UPDATE SPENDING TRIGGER -->
                     <form>
                         <td>
                             <div>
-                                <button id="updateButton" data-target="modalEditSpending" class="btn modal-trigger light-blue darken-4 btn-small" style="margin-top: 22px">UPDATE</button>
+                                <button id="updateButton" th:attr="data-target='modalEditSpending' + ${spendingItem.id}" class="btn modal-trigger light-blue darken-4 btn-small" style="margin-top: 22px">UPDATE</button>
                             </div>
                         </td>
                     </form>
 
                     <!-- Modal EDIT SPENDING Structure -->
-                    <div id="modalEditSpending" class="modal">
+                    <div th:id="'modalEditSpending' + ${spendingItem.id}" class="modal">
                         <form method="post" action="editSpending">
                             <div class="modal-content">
                                   <h5>Update spending category: </h5>
                                 <div class="input-field" id="updateCategoriesSelector">
                                     <select class="form-control browser-default" name="categoryId" required>
-                                        <option value="" disabled selected>Choose a category</option>
+                                        <option th:value="${spendingItem.spendingCategory.id}" th:text="${spendingItem.spendingCategory.categoryName}">Choose a category</option>
                                         <option th:each="spendingCategory : ${spendingCategories}"
                                                 th:value="${spendingCategory.id}"
                                                 th:text="${spendingCategory.categoryName}">
                                         </option>
                                     </select>
                                 </div>
+                                <div>
+                                    <div class="row">
+                                        <div class="row">
+                                            <div class="input-field">
+                                                <input type="hidden" name="actualSpendingId" th:value="${spendingItem.id}" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <br>
                                 <h5>Update amount:</h5>
                                 <div>
                                     <div class="row">
                                         <div class="row">
                                             <div class="input-field">
-                                                <input id="updateAmountSpent" name="amount" type="text" pattern="^[\d,]+\.?\d?\d?$" class="validate" required>
+                                                <input id="updateAmountSpent" name="amount" th:value="${spendingItem.amount}" type="text" pattern="^[\d,]+\.?\d?\d?$" class="validate" required>
                                             </div>
                                         </div>
                                     </div>
@@ -217,7 +221,7 @@
 
                                 <h5>Update date:</h5>
                                 <div id="updateDatePicker">
-                                    <input name="date" type="text" class="datepicker" required>
+                                    <input name="date" type="text" th:value="${#dates.format(spendingItem.spendingDate, 'MMM dd, yyyy')}" class="datepicker" required>
                                 </div>
                             </div>
 
@@ -233,7 +237,6 @@
                         </form>
                     </div>
                     <!--Modal ADD SPENDING end-->
-
 
                 </tr>
                 </tbody>
